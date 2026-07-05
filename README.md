@@ -62,7 +62,7 @@ These formulas expect the run sheet columns to be:
 | F | Gift Extra |
 | G | Lost |
 | H | Sold |
-| I | Quota |
+| I | New Quota |
 
 Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate stats.
 `Q1` means `Quota Number` 1, and `Q2+` means all rows whose `Quota Number` is 2 or greater.

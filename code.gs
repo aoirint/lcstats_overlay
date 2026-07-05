@@ -26,16 +26,12 @@ function doPost(e) {
   const newQuota = payload.QuotaInfo?.NewQuota ?? 0;
   const giftExtra = payload.PerformanceInfo?.ExtraFromOldGift ?? 0;
 
-  const fixedNewQuota = newQuota > 0 ? newQuota : 130;
   const lastRow = runSheet.getLastRow();
   const dayNumber = lastRow; // Day number
   const previousQuotaNumber = lastRow > 1
     ? Number(runSheet.getRange(lastRow, 1).getValue()) || 1
     : 1;
-  const previousQuota = lastRow > 1
-    ? Number(runSheet.getRange(lastRow, 9).getValue()) || 0
-    : 0;
-  const quotaNumber = previousQuota > 0 && fixedNewQuota > previousQuota
+  const quotaNumber = lastRow > 1 && newQuota > 0
     ? previousQuotaNumber + 1
     : previousQuotaNumber;
 
@@ -51,7 +47,7 @@ function doPost(e) {
     giftExtra, // Gift Extra
     lostScrapValue, // Lost
     valueSold, // Sold
-    fixedNewQuota, // Quota
+    newQuota, // New Quota
     receivedAt, // Received At
     json, // Json
   ]);
