@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LCStatsOverlay</title>
+<style>
+/*
+  OBS Browser Source overlay for a Google Sheets key-value summary.
+
+  Required local file layout:
+    index.html
+    assets/
+      3270-Regular.ttf
+
+  OBS recommended:
+    - Use as local file
+    - Background remains transparent
+    - Width: adjust to your scene, e.g. 720
+    - Height: adjust to your scene, e.g. 120
+
+  This overlay displays:
+    - Header row: configured labels
+    - Value row: values looked up from the configured sheet
+
+  Source sheet format:
+    Column A = key / item name
+    Column B = value
+
+  Example:
+    Q1 Avg/Med    100/100
+    Q2+ Avg/Med   200/200
+    Clear         58.3 %
+
+  This means the sheet is vertical key-value format, not a horizontal
+  header/data-row table.
+*/
+
+@font-face {
+  font-family: "OverlayFont";
+  src: url("./assets/3270-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --font-family: "OverlayFont", monospace;
+
+  --text-color: #ffffff;
+  --stroke-color: #ff6687;
+  --stroke-width: 6px;
+  --opacity: 0.95;
+
+  --header-font-size: 26px;
+  --value-font-size: 40px;
+
+  --column-gap: 18px;
+  --row-gap: 8px;
+
+  --cell-min-width: 120px;
+  --cell-padding-x: 0px;
+  --cell-padding-y: 0px;
+
+  --error-font-size: 24px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#overlay {
+  display: inline-block;
+  background: transparent;
+}
+
+#grid {
+  display: grid;
+
+  /*
+    Column widths are set from CONFIG.columnWidths in JavaScript.
+    Fallback keeps a 3-column grid if JavaScript fails early.
+  */
+  grid-template-columns: repeat(3, minmax(var(--cell-min-width), 1fr));
+
+  grid-template-rows: auto auto;
+  column-gap: var(--column-gap);
+  row-gap: var(--row-gap);
+  align-items: center;
+  justify-items: center;
+
+  font-family: var(--font-family);
+  color: var(--text-color);
+  opacity: var(--opacity);
+
+  -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
+  paint-order: stroke fill;
+
+  line-height: 1;
+}
+
+.cell {
+  min-width: var(--cell-min-width);
+  padding: var(--cell-padding-y) var(--cell-padding-x);
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.header {
+  font-size: var(--header-font-size);
+}
+
+.value {
+  font-size: var(--value-font-size);
+}
+
+#error {
+  display: none;
+  font-family: var(--font-family);
+  font-size: var(--error-font-size);
+  color: var(--text-color);
+  -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
+  paint-order: stroke fill;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+body.has-error #grid {
+  display: none;
+}
+
+body.has-error #error {
+  display: inline-block;
+}
+</style>
+</head>
+<body>
+<div id="overlay">
+  <div id="grid" aria-label="Value grid">
+    <div class="cell header" data-col="0">Q1 Avg/Med</div>
+    <div class="cell header" data-col="1">Q2+ Avg/Med</div>
+    <div class="cell header" data-col="2">Clear</div>
+
+    <div class="cell value" data-col="0">-</div>
+    <div class="cell value" data-col="1">-</div>
+    <div class="cell value" data-col="2">-</div>
+  </div>
+  <div id="error">ERROR</div>
+</div>
+
+<script>
+/*
+  Google Sheets source.
+
+  This uses the Google Visualization endpoint, so no API key is required.
+  The spreadsheet must be public/readable from OBS, usually:
+    - "Anyone with the link can view", or
+    - File > Share > Publish to web
+
+  Default source sheet:
+    Value
+
+  Expected source table example:
+    Q1 Avg/Med     100/100
+    Q2+ Avg/Med    200/200
+    Clear          58.3 %
+
+  Features:
+    - Sheet name is configurable with CONFIG.sheetName.
+    - Display labels are configurable with CONFIG.labels.
+    - Source values are automatically detected from key names in column A.
+    - Values are read from column B.
+    - Row order in the sheet may change without breaking the overlay.
+    - Column widths are configurable with CONFIG.columnWidths.
+    - The last good display is kept if the sheet temporarily fails to load.
+    - Update interval is configurable with CONFIG.refreshMs.
+*/
+
+const CONFIG = {
+  spreadsheetId: "YOUR_SPREADSHEET_ID_HERE",
+
+  // Sheet/tab name to read from.
+  sheetName: "Value",
+
+  // 5 seconds.
+  refreshMs: 5000,
+
+  // Display labels, in the order you want them shown on OBS.
+  labels: ["Q1 Avg/Med", "Q2+ Avg/Med", "Clear"],
+
+  // Key names to search for in column A of the source sheet.
+  // Usually this should match CONFIG.labels.
+  // You can set aliases if the source sheet key differs from the display label.
+  //
+  // Example:
+  // sourceKeys: ["Q1 Average/Median", "Q2+ Average/Median", "Clear Rate"]
+  sourceKeys: ["Q1 Avg/Med", "Q2+ Avg/Med", "Clear"],
+
+  // Column widths for CSS Grid.
+  // You can use any valid CSS grid width value:
+  //   "120px", "160px", "1fr", "auto", "minmax(120px, 1fr)"
+  //
+  // Examples:
+  //   Fixed widths:
+  //     ["220px", "220px", "160px"]
+  //
+  //   Wider clear column:
+  //     ["220px", "220px", "200px"]
+  //
+  //   Flexible OBS-width layout:
+  //     ["1.4fr", "1.4fr", "1fr"]
+  //
+  // If this array is shorter than CONFIG.labels, missing columns fall back to
+  // minmax(var(--cell-min-width), 1fr).
+  columnWidths: ["220px", "220px", "160px"],
+
+  // Range to read from the key-value sheet.
+  // A = key, B = value.
+  sourceStartRow: 1,
+  sourceEndRow: 100,
+  sourceKeyColumn: "A",
+  sourceValueColumn: "B",
+
+  // If the sheet temporarily fails to load, keep the last good display.
+  keepLastGoodDataOnError: true,
+
+  // Cache buster helps OBS/Chromium avoid stale responses.
+  useCacheBuster: true
+};
+
+const gridEl = document.getElementById("grid");
+const errorEl = document.getElementById("error");
+const headerEls = Array.from(document.querySelectorAll(".header"));
+const valueEls = Array.from(document.querySelectorAll(".value"));
+
+let lastGood = null;
+let timerId = null;
+
+function initializeLabels() {
+  for (let col = 0; col < CONFIG.labels.length; col++) {
+    headerEls[col].textContent = CONFIG.labels[col] || "";
+  }
+}
+
+function sanitizeGridTrack(value) {
+  const fallback = "minmax(var(--cell-min-width), 1fr)";
+
+  if (typeof value !== "string") return fallback;
+
+  const trimmed = value.trim();
+  if (!trimmed) return fallback;
+
+  /*
+    This is a local OBS overlay configuration helper, not a security boundary.
+    It only prevents accidental semicolon/newline injection from breaking the
+    entire style attribute if CONFIG is edited incorrectly.
+  */
+  if (/[;\n\r{}]/.test(trimmed)) return fallback;
+
+  return trimmed;
+}
+
+function applyColumnWidths() {
+  const fallback = "minmax(var(--cell-min-width), 1fr)";
+  const tracks = [];
+
+  for (let col = 0; col < CONFIG.labels.length; col++) {
+    tracks.push(sanitizeGridTrack(CONFIG.columnWidths?.[col] || fallback));
+  }
+
+  gridEl.style.gridTemplateColumns = tracks.join(" ");
+}
+
+function normalizeKey(value) {
+  return String(value ?? "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLowerCase();
+}
+
+function cellToText(cell) {
+  if (!cell) return "";
+  if (cell.f !== undefined && cell.f !== null) return String(cell.f);
+  if (cell.v !== undefined && cell.v !== null) return String(cell.v);
+  return "";
+}
+
+function buildUrl() {
+  const range =
+    `${CONFIG.sourceKeyColumn}${CONFIG.sourceStartRow}:` +
+    `${CONFIG.sourceValueColumn}${CONFIG.sourceEndRow}`;
+
+  const query = encodeURIComponent("select A,B");
+
+  const base =
+    `https://docs.google.com/spreadsheets/d/${CONFIG.spreadsheetId}/gviz/tq` +
+    `?sheet=${encodeURIComponent(CONFIG.sheetName)}` +
+    `&range=${encodeURIComponent(range)}` +
+    `&headers=0` +
+    `&tqx=out:json` +
+    `&tq=${query}`;
+
+  return CONFIG.useCacheBuster
+    ? `${base}&_=${Date.now()}`
+    : base;
+}
+
+function parseGoogleVisualizationResponse(text) {
+  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?\s*$/);
+  if (!match) {
+    throw new Error("Google response parse failed");
+  }
+
+  const json = JSON.parse(match[1]);
+
+  if (json.status === "error") {
+    const detail = json.errors?.map(e => e.detailed_message || e.message).join(" / ");
+    throw new Error(detail || "Google returned error");
+  }
+
+  const rows = json.table?.rows || [];
+  const valueByKey = new Map();
+
+  for (const row of rows) {
+    const key = normalizeKey(cellToText(row.c?.[0]));
+    const value = cellToText(row.c?.[1]);
+
+    if (key && !valueByKey.has(key)) {
+      valueByKey.set(key, value);
+    }
+  }
+
+  const values = CONFIG.sourceKeys.map((key) => {
+    const normalized = normalizeKey(key);
+
+    if (!valueByKey.has(normalized)) {
+      throw new Error(`Missing key: ${key}`);
+    }
+
+    return valueByKey.get(normalized);
+  });
+
+  return {
+    labels: CONFIG.labels.slice(),
+    values
+  };
+}
+
+function render(data) {
+  document.body.classList.remove("has-error");
+
+  for (let col = 0; col < CONFIG.labels.length; col++) {
+    headerEls[col].textContent = data.labels[col] || "";
+    valueEls[col].textContent = data.values[col] || "";
+  }
+
+  lastGood = data;
+}
+
+function showError(message) {
+  console.error(message);
+
+  initializeLabels();
+
+  if (CONFIG.keepLastGoodDataOnError && lastGood) {
+    render(lastGood);
+    return;
+  }
+
+  errorEl.textContent = `ERROR: ${message}`;
+  document.body.classList.add("has-error");
+}
+
+async function loadSheet() {
+  try {
+    const response = await fetch(buildUrl(), {
+      cache: "no-store",
+      mode: "cors",
+      credentials: "omit"
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const text = await response.text();
+    const data = parseGoogleVisualizationResponse(text);
+    render(data);
+  } catch (error) {
+    showError(error?.message || String(error));
+  }
+}
+
+function start() {
+  initializeLabels();
+  applyColumnWidths();
+
+  if (timerId) clearInterval(timerId);
+  loadSheet();
+  timerId = setInterval(loadSheet, CONFIG.refreshMs);
+}
+
+start();
+</script>
+</body>
+</html>
