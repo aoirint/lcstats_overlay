@@ -18,22 +18,33 @@ function doPost(e) {
   const runSheet = ss.getSheetByName(runSheetName);
   if (!runSheet) throw new Error(`Sheet not found: ${runSheetName}`);
 
-  const sequenceNumber = runSheet.getLastRow(); // Day number
   const moonName = payload.MoonInfo?.Name ?? "";
   const dailyCollectedScrap = payload.PerformanceInfo?.CollectedTotal ?? 0;
   const dailyTotalScrap = payload.PerformanceInfo?.TotalAvailableValue ?? 0;
   const missedItems = payload.MissedItems ?? [];
-  const valueSold = payload.QuotaInfo.ValueSold ?? 0;
-  const newQuota = payload.QuotaInfo.NewQuota ?? 0;
-  const giftExtra = paylaod.PerformanceInfo.ExtraFromOldGift ?? 0;
+  const valueSold = payload.QuotaInfo?.ValueSold ?? 0;
+  const newQuota = payload.QuotaInfo?.NewQuota ?? 0;
+  const giftExtra = payload.PerformanceInfo?.ExtraFromOldGift ?? 0;
 
   const fixedNewQuota = newQuota > 0 ? newQuota : 130;
+  const lastRow = runSheet.getLastRow();
+  const dayNumber = lastRow; // Day number
+  const previousQuotaNumber = lastRow > 1
+    ? Number(runSheet.getRange(lastRow, 1).getValue()) || 1
+    : 1;
+  const previousQuota = lastRow > 1
+    ? Number(runSheet.getRange(lastRow, 10).getValue()) || 0
+    : 0;
+  const quotaNumber = previousQuota > 0 && fixedNewQuota > previousQuota
+    ? previousQuotaNumber + 1
+    : previousQuotaNumber;
 
   const lostScraps = missedItems.filter((item) => item.CollectedOnPreviousDay);
   const lostScrapValue = lostScraps.reduce((acc, num) => acc + num, 0);
 
   runSheet.appendRow([
-    sequenceNumber, // Day
+    quotaNumber, // Quota Number
+    dayNumber, // Day
     moonName, // Moon
     dailyCollectedScrap, // Collected
     dailyTotalScrap, // Total

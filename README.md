@@ -54,14 +54,16 @@ These formulas expect the run sheet columns to be:
 
 | Column | Value |
 | --- | --- |
-| A | Day |
-| B | Moon |
-| C | Collected |
-| D | Total |
-| E | Gift Extra |
-| F | Lost |
-| G | Sold |
-| H | Buy |
+| A | Quota Number |
+| B | Day |
+| C | Moon |
+| D | Collected |
+| E | Total |
+| F | Gift Extra |
+| G | Lost |
+| H | Sold |
+| I | Buy |
+| J | Quota |
 
 Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate stats.
 
@@ -69,11 +71,11 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 
 ```
 =IFERROR(
-  SUM(INDIRECT("'" & Config!B1 & "'!C:C"))
-  + SUM(INDIRECT("'" & Config!B1 & "'!E:E"))
-  - SUM(INDIRECT("'" & Config!B1 & "'!F:F"))
+  SUM(INDIRECT("'" & Config!B1 & "'!D:D"))
+  + SUM(INDIRECT("'" & Config!B1 & "'!F:F"))
   - SUM(INDIRECT("'" & Config!B1 & "'!G:G"))
-  - SUM(INDIRECT("'" & Config!B1 & "'!H:H")),
+  - SUM(INDIRECT("'" & Config!B1 & "'!H:H"))
+  - SUM(INDIRECT("'" & Config!B1 & "'!I:I")),
   "-"
 )
 ```
@@ -86,9 +88,9 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
     values,
       TAKE(
         FILTER(
-          INDIRECT("'" & Config!B1 & "'!C:C"),
-          INDIRECT("'" & Config!B1 & "'!B:B") <> "71 Gordion",
-          ISNUMBER(INDIRECT("'" & Config!B1 & "'!C:C"))
+          INDIRECT("'" & Config!B1 & "'!D:D"),
+          INDIRECT("'" & Config!B1 & "'!C:C") <> "71 Gordion",
+          ISNUMBER(INDIRECT("'" & Config!B1 & "'!D:D"))
         ),
         -3
       ),
@@ -105,9 +107,9 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
   LET(
     values,
       FILTER(
-        INDIRECT("'" & Config!B1 & "'!C5:C"),
-        INDIRECT("'" & Config!B1 & "'!B5:B") <> "71 Gordion",
-        ISNUMBER(INDIRECT("'" & Config!B1 & "'!C5:C"))
+        INDIRECT("'" & Config!B1 & "'!D5:D"),
+        INDIRECT("'" & Config!B1 & "'!C5:C") <> "71 Gordion",
+        ISNUMBER(INDIRECT("'" & Config!B1 & "'!D5:D"))
       ),
     FLOOR(AVERAGE(values)) & "/" & FLOOR(MEDIAN(values))
   ),
@@ -122,15 +124,15 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
   LET(
     collected,
       FILTER(
-        INDIRECT("'" & Config!B1 & "'!C:C"),
-        INDIRECT("'" & Config!B1 & "'!B:B") <> "71 Gordion",
-        ISNUMBER(INDIRECT("'" & Config!B1 & "'!C:C"))
+        INDIRECT("'" & Config!B1 & "'!D:D"),
+        INDIRECT("'" & Config!B1 & "'!C:C") <> "71 Gordion",
+        ISNUMBER(INDIRECT("'" & Config!B1 & "'!D:D"))
       ),
     total,
       FILTER(
-        INDIRECT("'" & Config!B1 & "'!D:D"),
-        INDIRECT("'" & Config!B1 & "'!B:B") <> "71 Gordion",
-        ISNUMBER(INDIRECT("'" & Config!B1 & "'!D:D"))
+        INDIRECT("'" & Config!B1 & "'!E:E"),
+        INDIRECT("'" & Config!B1 & "'!C:C") <> "71 Gordion",
+        ISNUMBER(INDIRECT("'" & Config!B1 & "'!E:E"))
       ),
     TEXT(SUM(collected) / SUM(total), "0.0 %")
   ),
