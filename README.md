@@ -47,6 +47,44 @@ Then use:
 http://localhost:8000/index.html
 ```
 
+## Spreadsheet Functions
+
+### P3D Avg/Med
+
+```
+=IFERROR(
+  FLOOR(AVERAGE(INDIRECT("'" & Config!B1 & "'!B" & MAX(0, COUNTA(INDIRECT("'" & Config!B1 & "'!B:B")) - 2) & ":B" & COUNTA(INDIRECT("'" & Config!B1 & "'!B:B")))))
+  & "/"
+  & FLOOR(MEDIAN(INDIRECT("'" & Config!B1 & "'!B" & MAX(0, COUNTA(INDIRECT("'" & Config!B1 & "'!B:B")) - 2) & ":B" & COUNTA(INDIRECT("'" & Config!B1 & "'!B:B"))))),
+  "-"
+)
+```
+
+### Q2+ Avg/Med
+
+```
+=IFERROR(
+  FLOOR(AVERAGE(INDIRECT("'" & Config!B1 & "'!B5:B")))
+  & "/"
+  & FLOOR(MEDIAN(INDIRECT("'" & Config!B1 & "'!B5:B"))),
+  "-"
+)
+```
+
+### Clear
+
+```
+=IFERROR(
+  TEXT(
+    SUM(INDIRECT("'" & Config!B1 & "'!B:B"))
+    /
+    SUM(INDIRECT("'" & Config!B1 & "'!C:C")),
+    "0.0 %"
+  ),
+  "-"
+)
+```
+
 ## Font License
 
 This overlay includes `assets/3270-Regular.ttf` from
