@@ -49,13 +49,33 @@ http://localhost:8000/index.html
 
 ## Spreadsheet Functions
 
+These formulas expect the run sheet columns to be:
+
+| Column | Value |
+| --- | --- |
+| A | Day |
+| B | Moon |
+| C | Collected |
+| D | Total |
+
+Rows whose `Moon` is `71 Gordion` are excluded from the stats.
+
 ### P3D Avg/Med
 
 ```
 =IFERROR(
-  FLOOR(AVERAGE(INDIRECT("'" & Config!B1 & "'!B" & MAX(0, COUNTA(INDIRECT("'" & Config!B1 & "'!B:B")) - 2) & ":B" & COUNTA(INDIRECT("'" & Config!B1 & "'!B:B")))))
-  & "/"
-  & FLOOR(MEDIAN(INDIRECT("'" & Config!B1 & "'!B" & MAX(0, COUNTA(INDIRECT("'" & Config!B1 & "'!B:B")) - 2) & ":B" & COUNTA(INDIRECT("'" & Config!B1 & "'!B:B"))))),
+  LET(
+    values,
+      TAKE(
+        FILTER(
+          INDIRECT("'" & Config!B1 & "'!C:C"),
+          INDIRECT("'" & Config!B1 & "'!B:B") <> "71 Gordion",
+          ISNUMBER(INDIRECT("'" & Config!B1 & "'!C:C"))
+        ),
+        -3
+      ),
+    FLOOR(AVERAGE(values)) & "/" & FLOOR(MEDIAN(values))
+  ),
   "-"
 )
 ```
@@ -64,9 +84,15 @@ http://localhost:8000/index.html
 
 ```
 =IFERROR(
-  FLOOR(AVERAGE(INDIRECT("'" & Config!B1 & "'!B5:B")))
-  & "/"
-  & FLOOR(MEDIAN(INDIRECT("'" & Config!B1 & "'!B5:B"))),
+  LET(
+    values,
+      FILTER(
+        INDIRECT("'" & Config!B1 & "'!C5:C"),
+        INDIRECT("'" & Config!B1 & "'!B5:B") <> "71 Gordion",
+        ISNUMBER(INDIRECT("'" & Config!B1 & "'!C5:C"))
+      ),
+    FLOOR(AVERAGE(values)) & "/" & FLOOR(MEDIAN(values))
+  ),
   "-"
 )
 ```
@@ -75,11 +101,20 @@ http://localhost:8000/index.html
 
 ```
 =IFERROR(
-  TEXT(
-    SUM(INDIRECT("'" & Config!B1 & "'!B:B"))
-    /
-    SUM(INDIRECT("'" & Config!B1 & "'!C:C")),
-    "0.0 %"
+  LET(
+    collected,
+      FILTER(
+        INDIRECT("'" & Config!B1 & "'!C:C"),
+        INDIRECT("'" & Config!B1 & "'!B:B") <> "71 Gordion",
+        ISNUMBER(INDIRECT("'" & Config!B1 & "'!C:C"))
+      ),
+    total,
+      FILTER(
+        INDIRECT("'" & Config!B1 & "'!D:D"),
+        INDIRECT("'" & Config!B1 & "'!B:B") <> "71 Gordion",
+        ISNUMBER(INDIRECT("'" & Config!B1 & "'!D:D"))
+      ),
+    TEXT(SUM(collected) / SUM(total), "0.0 %")
   ),
   "-"
 )
