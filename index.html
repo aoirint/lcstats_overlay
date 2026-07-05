@@ -10,11 +10,12 @@
 
   Required local file layout:
     index.html
+    config.json
     assets/
       3270-Regular.ttf
 
   OBS recommended:
-    - Use as local file
+    - Use as local file, or serve this folder from a local/static web server
     - Background remains transparent
     - Width: adjust to your scene, e.g. 720
     - Height: adjust to your scene, e.g. 120
@@ -179,18 +180,15 @@ body.has-error #error {
     Clear          58.3 %
 
   Features:
-    - Sheet name is configurable with CONFIG.sheetName.
-    - Display labels are configurable with CONFIG.labels.
+    - Spreadsheet ID is loaded from config.json.
     - Source values are automatically detected from key names in column A.
     - Values are read from column B.
     - Row order in the sheet may change without breaking the overlay.
-    - Column widths are configurable with CONFIG.columnWidths.
     - The last good display is kept if the sheet temporarily fails to load.
-    - Update interval is configurable with CONFIG.refreshMs.
 */
 
 const CONFIG = {
-  spreadsheetId: "YOUR_SPREADSHEET_ID_HERE",
+  spreadsheetId: "",
 
   // Sheet/tab name to read from.
   sheetName: "Value",
@@ -249,6 +247,39 @@ const valueEls = Array.from(document.querySelectorAll(".value"));
 let lastGood = null;
 let timerId = null;
 
+function withCacheBuster(url) {
+  const separator = url.includes("?") ? "&" : "?";
+  return `${url}${separator}_=${Date.now()}`;
+}
+
+function assertString(config, key) {
+  if (typeof config[key] !== "string" || config[key].trim() === "") {
+    throw new Error(`Invalid config: ${key}`);
+  }
+}
+
+function validateConfig(config) {
+  assertString(config, "spreadsheetId");
+
+  if (!/^[A-Za-z0-9_-]+$/.test(config.spreadsheetId)) {
+    throw new Error("Invalid config: spreadsheetId");
+  }
+}
+
+async function loadConfig() {
+  const response = await fetch(withCacheBuster("./config.json"), {
+    cache: "no-store"
+  });
+
+  if (!response.ok) {
+    throw new Error(`Config HTTP ${response.status}`);
+  }
+
+  const config = await response.json();
+  validateConfig(config);
+  CONFIG.spreadsheetId = config.spreadsheetId;
+}
+
 function initializeLabels() {
   for (let col = 0; col < CONFIG.labels.length; col++) {
     headerEls[col].textContent = CONFIG.labels[col] || "";
@@ -263,11 +294,6 @@ function sanitizeGridTrack(value) {
   const trimmed = value.trim();
   if (!trimmed) return fallback;
 
-  /*
-    This is a local OBS overlay configuration helper, not a security boundary.
-    It only prevents accidental semicolon/newline injection from breaking the
-    entire style attribute if CONFIG is edited incorrectly.
-  */
   if (/[;\n\r{}]/.test(trimmed)) return fallback;
 
   return trimmed;
@@ -278,7 +304,7 @@ function applyColumnWidths() {
   const tracks = [];
 
   for (let col = 0; col < CONFIG.labels.length; col++) {
-    tracks.push(sanitizeGridTrack(CONFIG.columnWidths?.[col] || fallback));
+    tracks.push(sanitizeGridTrack(CONFIG.columnWidths[col] || fallback));
   }
 
   gridEl.style.gridTemplateColumns = tracks.join(" ");
@@ -404,9 +430,16 @@ async function loadSheet() {
   }
 }
 
-function start() {
-  initializeLabels();
-  applyColumnWidths();
+async function start() {
+  try {
+    await loadConfig();
+    initializeLabels();
+    applyColumnWidths();
+  } catch (error) {
+    errorEl.textContent = `CONFIG ERROR: ${error?.message || String(error)}`;
+    document.body.classList.add("has-error");
+    return;
+  }
 
   if (timerId) clearInterval(timerId);
   loadSheet();
