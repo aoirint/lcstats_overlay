@@ -30,7 +30,7 @@
 
   Example:
     Q1 Avg/Med    100/100
-    Q2 Avg/Med   200/200
+    Q2+ Avg/Med   200/200
     Clear         58.3 %
 
   This means the sheet is vertical key-value format, not a horizontal
@@ -152,7 +152,7 @@ body.has-error #error {
 <div id="overlay">
   <div id="grid" aria-label="Value grid">
     <div class="cell header" data-col="0">Ship Total</div>
-    <div class="cell header" data-col="1">Q2 Avg/Med</div>
+    <div class="cell header" data-col="1">Q2+ Avg/Med</div>
     <div class="cell header" data-col="2">Clear</div>
 
     <div class="cell value" data-col="0">-</div>
@@ -177,7 +177,7 @@ body.has-error #error {
   Expected source table example:
     Ship Total     1234
     Q1 Avg/Med     100/100
-    Q2 Avg/Med    200/200
+    Q2+ Avg/Med    200/200
     Clear          58.3 %
 
   Features:
@@ -198,7 +198,7 @@ const CONFIG = {
   refreshMs: 5000,
 
   // Display labels, in the order you want them shown on OBS.
-  labels: ["Ship Total", "Q2 Avg/Med", "Clear"],
+  labels: ["Ship Total", "Q2+ Avg/Med", "Clear"],
 
   // Key names to search for in column A of the source sheet.
   // Usually this should match CONFIG.labels.
@@ -206,8 +206,8 @@ const CONFIG = {
   // Use an array to provide fallback keys. The first non-"-" value is shown.
   //
   // Example:
-  // sourceKeys: ["Ship Total", ["Q2 Avg/Med", "Q1 Avg/Med"], "Clear Rate"]
-  sourceKeys: ["Ship Total", ["Q2 Avg/Med", "Q1 Avg/Med"], "Clear"],
+  // sourceKeys: ["Ship Total", ["Q2+ Avg/Med", "Q1 Avg/Med"], "Clear Rate"]
+  sourceKeys: ["Ship Total", ["Q2+ Avg/Med", "Q1 Avg/Med"], "Clear"],
 
   // Column widths for CSS Grid.
   // You can use any valid CSS grid width value:

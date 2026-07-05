@@ -20,10 +20,10 @@ The overlay reads the `Value` sheet as a vertical key-value table.
 | --- | --- |
 | Ship Total | 1234 |
 | Q1 Avg/Med | 100/100 |
-| Q2 Avg/Med | 200/200 |
+| Q2+ Avg/Med | 200/200 |
 | Clear | 58.3 % |
 
-The overlay displays `Q2 Avg/Med`, but falls back to `Q1 Avg/Med` while `Q2 Avg/Med` is `-`.
+The overlay displays `Q2+ Avg/Med`, but falls back to `Q1 Avg/Med` while `Q2+ Avg/Med` is `-`.
 
 ## OBS Usage
 
@@ -66,6 +66,7 @@ These formulas expect the run sheet columns to be:
 | J | Quota |
 
 Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate stats.
+`Q1` means `Quota Number` 1, and `Q2+` means all rows whose `Quota Number` is 2 or greater.
 
 ### Ship Total
 
@@ -86,13 +87,11 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 =IFERROR(
   LET(
     values,
-      TAKE(
-        FILTER(
-          INDIRECT("'" & Config!B1 & "'!D:D"),
-          INDIRECT("'" & Config!B1 & "'!C:C") <> "71 Gordion",
-          ISNUMBER(INDIRECT("'" & Config!B1 & "'!D:D"))
-        ),
-        -3
+      FILTER(
+        INDIRECT("'" & Config!B1 & "'!D:D"),
+        INDIRECT("'" & Config!B1 & "'!A:A") = 1,
+        INDIRECT("'" & Config!B1 & "'!C:C") <> "71 Gordion",
+        ISNUMBER(INDIRECT("'" & Config!B1 & "'!D:D"))
       ),
     FLOOR(AVERAGE(values)) & "/" & FLOOR(MEDIAN(values))
   ),
@@ -100,16 +99,17 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 )
 ```
 
-### Q2 Avg/Med
+### Q2+ Avg/Med
 
 ```
 =IFERROR(
   LET(
     values,
       FILTER(
-        INDIRECT("'" & Config!B1 & "'!D5:D"),
-        INDIRECT("'" & Config!B1 & "'!C5:C") <> "71 Gordion",
-        ISNUMBER(INDIRECT("'" & Config!B1 & "'!D5:D"))
+        INDIRECT("'" & Config!B1 & "'!D:D"),
+        INDIRECT("'" & Config!B1 & "'!A:A") >= 2,
+        INDIRECT("'" & Config!B1 & "'!C:C") <> "71 Gordion",
+        ISNUMBER(INDIRECT("'" & Config!B1 & "'!D:D"))
       ),
     FLOOR(AVERAGE(values)) & "/" & FLOOR(MEDIAN(values))
   ),
