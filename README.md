@@ -19,11 +19,11 @@ The overlay reads the `Value` sheet as a vertical key-value table.
 | Column A | Column B |
 | --- | --- |
 | Ship Total | 1234 |
-| P3D Avg/Med | 100/100 |
-| Q2+ Avg/Med | 200/200 |
+| Q1 Avg/Med | 100/100 |
+| Q2 Avg/Med | 200/200 |
 | Clear | 58.3 % |
 
-The key names in column A must match the labels hardcoded in `index.html`.
+The overlay displays `Q2 Avg/Med`, but falls back to `Q1 Avg/Med` while `Q2 Avg/Med` is `-`.
 
 ## OBS Usage
 
@@ -78,7 +78,7 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 )
 ```
 
-### P3D Avg/Med
+### Q1 Avg/Med
 
 ```
 =IFERROR(
@@ -98,7 +98,7 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 )
 ```
 
-### Q2+ Avg/Med
+### Q2 Avg/Med
 
 ```
 =IFERROR(

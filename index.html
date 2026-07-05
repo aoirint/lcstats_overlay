@@ -29,8 +29,8 @@
     Column B = value
 
   Example:
-    P3D Avg/Med    100/100
-    Q2+ Avg/Med   200/200
+    Q1 Avg/Med    100/100
+    Q2 Avg/Med   200/200
     Clear         58.3 %
 
   This means the sheet is vertical key-value format, not a horizontal
@@ -152,14 +152,12 @@ body.has-error #error {
 <div id="overlay">
   <div id="grid" aria-label="Value grid">
     <div class="cell header" data-col="0">Ship Total</div>
-    <div class="cell header" data-col="1">P3D Avg/Med</div>
-    <div class="cell header" data-col="2">Q2+ Avg/Med</div>
-    <div class="cell header" data-col="3">Clear</div>
+    <div class="cell header" data-col="1">Q2 Avg/Med</div>
+    <div class="cell header" data-col="2">Clear</div>
 
     <div class="cell value" data-col="0">-</div>
     <div class="cell value" data-col="1">-</div>
     <div class="cell value" data-col="2">-</div>
-    <div class="cell value" data-col="3">-</div>
   </div>
   <div id="error">ERROR</div>
 </div>
@@ -178,8 +176,8 @@ body.has-error #error {
 
   Expected source table example:
     Ship Total     1234
-    P3D Avg/Med     100/100
-    Q2+ Avg/Med    200/200
+    Q1 Avg/Med     100/100
+    Q2 Avg/Med    200/200
     Clear          58.3 %
 
   Features:
@@ -200,15 +198,16 @@ const CONFIG = {
   refreshMs: 5000,
 
   // Display labels, in the order you want them shown on OBS.
-  labels: ["Ship Total", "P3D Avg/Med", "Q2+ Avg/Med", "Clear"],
+  labels: ["Ship Total", "Q2 Avg/Med", "Clear"],
 
   // Key names to search for in column A of the source sheet.
   // Usually this should match CONFIG.labels.
   // You can set aliases if the source sheet key differs from the display label.
+  // Use an array to provide fallback keys. The first non-"-" value is shown.
   //
   // Example:
-  // sourceKeys: ["Ship Total", "P3D Average/Median", "Q2+ Average/Median", "Clear Rate"]
-  sourceKeys: ["Ship Total", "P3D Avg/Med", "Q2+ Avg/Med", "Clear"],
+  // sourceKeys: ["Ship Total", ["Q2 Avg/Med", "Q1 Avg/Med"], "Clear Rate"]
+  sourceKeys: ["Ship Total", ["Q2 Avg/Med", "Q1 Avg/Med"], "Clear"],
 
   // Column widths for CSS Grid.
   // You can use any valid CSS grid width value:
@@ -372,14 +371,24 @@ function parseGoogleVisualizationResponse(text) {
     }
   }
 
-  const values = CONFIG.sourceKeys.map((key) => {
-    const normalized = normalizeKey(key);
+  const values = CONFIG.sourceKeys.map((sourceKey) => {
+    const keys = Array.isArray(sourceKey) ? sourceKey : [sourceKey];
+    let fallbackValue = null;
 
-    if (!valueByKey.has(normalized)) {
-      throw new Error(`Missing key: ${key}`);
+    for (const key of keys) {
+      const normalized = normalizeKey(key);
+
+      if (!valueByKey.has(normalized)) {
+        continue;
+      }
+
+      const value = valueByKey.get(normalized);
+      if (fallbackValue === null) fallbackValue = value;
+      if (value.trim() !== "-") return value;
     }
 
-    return valueByKey.get(normalized);
+    if (fallbackValue !== null) return fallbackValue;
+    throw new Error(`Missing key: ${keys.join(" or ")}`);
   });
 
   return {
