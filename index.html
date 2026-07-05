@@ -28,7 +28,7 @@
     Column B = value
 
   Example:
-    Q1 Avg/Med    100/100
+    P3D Avg/Med    100/100
     Q2+ Avg/Med   200/200
     Clear         58.3 %
 
@@ -150,7 +150,7 @@ body.has-error #error {
 <body>
 <div id="overlay">
   <div id="grid" aria-label="Value grid">
-    <div class="cell header" data-col="0">Q1 Avg/Med</div>
+    <div class="cell header" data-col="0">P3D Avg/Med</div>
     <div class="cell header" data-col="1">Q2+ Avg/Med</div>
     <div class="cell header" data-col="2">Clear</div>
 
@@ -174,7 +174,7 @@ body.has-error #error {
     Value
 
   Expected source table example:
-    Q1 Avg/Med     100/100
+    P3D Avg/Med     100/100
     Q2+ Avg/Med    200/200
     Clear          58.3 %
 
@@ -199,15 +199,15 @@ const CONFIG = {
   refreshMs: 5000,
 
   // Display labels, in the order you want them shown on OBS.
-  labels: ["Q1 Avg/Med", "Q2+ Avg/Med", "Clear"],
+  labels: ["P3D Avg/Med", "Q2+ Avg/Med", "Clear"],
 
   // Key names to search for in column A of the source sheet.
   // Usually this should match CONFIG.labels.
   // You can set aliases if the source sheet key differs from the display label.
   //
   // Example:
-  // sourceKeys: ["Q1 Average/Median", "Q2+ Average/Median", "Clear Rate"]
-  sourceKeys: ["Q1 Avg/Med", "Q2+ Avg/Med", "Clear"],
+  // sourceKeys: ["P3D Average/Median", "Q2+ Average/Median", "Clear Rate"]
+  sourceKeys: ["P3D Avg/Med", "Q2+ Avg/Med", "Clear"],
 
   // Column widths for CSS Grid.
   // You can use any valid CSS grid width value:
