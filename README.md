@@ -62,8 +62,7 @@ These formulas expect the run sheet columns to be:
 | F | Gift Extra |
 | G | Lost |
 | H | Sold |
-| I | Buy |
-| J | Quota |
+| I | Quota |
 
 Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate stats.
 `Q1` means `Quota Number` 1, and `Q2+` means all rows whose `Quota Number` is 2 or greater.
@@ -75,8 +74,7 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
   SUM(INDIRECT("'" & Config!B1 & "'!D:D"))
   + SUM(INDIRECT("'" & Config!B1 & "'!F:F"))
   - SUM(INDIRECT("'" & Config!B1 & "'!G:G"))
-  - SUM(INDIRECT("'" & Config!B1 & "'!H:H"))
-  - SUM(INDIRECT("'" & Config!B1 & "'!I:I")),
+  - SUM(INDIRECT("'" & Config!B1 & "'!H:H")),
   "-"
 )
 ```

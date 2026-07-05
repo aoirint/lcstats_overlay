@@ -33,7 +33,7 @@ function doPost(e) {
     ? Number(runSheet.getRange(lastRow, 1).getValue()) || 1
     : 1;
   const previousQuota = lastRow > 1
-    ? Number(runSheet.getRange(lastRow, 10).getValue()) || 0
+    ? Number(runSheet.getRange(lastRow, 9).getValue()) || 0
     : 0;
   const quotaNumber = previousQuota > 0 && fixedNewQuota > previousQuota
     ? previousQuotaNumber + 1
@@ -51,7 +51,6 @@ function doPost(e) {
     giftExtra, // Gift Extra
     lostScrapValue, // Lost
     valueSold, // Sold
-    0, // Buy
     fixedNewQuota, // Quota
     receivedAt, // Received At
     json, // Json
