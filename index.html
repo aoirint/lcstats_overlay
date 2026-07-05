@@ -151,13 +151,15 @@ body.has-error #error {
 <body>
 <div id="overlay">
   <div id="grid" aria-label="Value grid">
-    <div class="cell header" data-col="0">P3D Avg/Med</div>
-    <div class="cell header" data-col="1">Q2+ Avg/Med</div>
-    <div class="cell header" data-col="2">Clear</div>
+    <div class="cell header" data-col="0">Ship Total</div>
+    <div class="cell header" data-col="1">P3D Avg/Med</div>
+    <div class="cell header" data-col="2">Q2+ Avg/Med</div>
+    <div class="cell header" data-col="3">Clear</div>
 
     <div class="cell value" data-col="0">-</div>
     <div class="cell value" data-col="1">-</div>
     <div class="cell value" data-col="2">-</div>
+    <div class="cell value" data-col="3">-</div>
   </div>
   <div id="error">ERROR</div>
 </div>
@@ -175,6 +177,7 @@ body.has-error #error {
     Value
 
   Expected source table example:
+    Ship Total     1234
     P3D Avg/Med     100/100
     Q2+ Avg/Med    200/200
     Clear          58.3 %
@@ -197,15 +200,15 @@ const CONFIG = {
   refreshMs: 5000,
 
   // Display labels, in the order you want them shown on OBS.
-  labels: ["P3D Avg/Med", "Q2+ Avg/Med", "Clear"],
+  labels: ["Ship Total", "P3D Avg/Med", "Q2+ Avg/Med", "Clear"],
 
   // Key names to search for in column A of the source sheet.
   // Usually this should match CONFIG.labels.
   // You can set aliases if the source sheet key differs from the display label.
   //
   // Example:
-  // sourceKeys: ["P3D Average/Median", "Q2+ Average/Median", "Clear Rate"]
-  sourceKeys: ["P3D Avg/Med", "Q2+ Avg/Med", "Clear"],
+  // sourceKeys: ["Ship Total", "P3D Average/Median", "Q2+ Average/Median", "Clear Rate"]
+  sourceKeys: ["Ship Total", "P3D Avg/Med", "Q2+ Avg/Med", "Clear"],
 
   // Column widths for CSS Grid.
   // You can use any valid CSS grid width value:

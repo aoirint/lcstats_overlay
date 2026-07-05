@@ -18,6 +18,7 @@ The overlay reads the `Value` sheet as a vertical key-value table.
 
 | Column A | Column B |
 | --- | --- |
+| Ship Total | 1234 |
 | P3D Avg/Med | 100/100 |
 | Q2+ Avg/Med | 200/200 |
 | Clear | 58.3 % |
@@ -57,8 +58,25 @@ These formulas expect the run sheet columns to be:
 | B | Moon |
 | C | Collected |
 | D | Total |
+| E | Gift Extra |
+| F | Lost |
+| G | Sold |
+| H | Buy |
 
-Rows whose `Moon` is `71 Gordion` are excluded from the stats.
+Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate stats.
+
+### Ship Total
+
+```
+=IFERROR(
+  SUM(INDIRECT("'" & Config!B1 & "'!C:C"))
+  + SUM(INDIRECT("'" & Config!B1 & "'!E:E"))
+  - SUM(INDIRECT("'" & Config!B1 & "'!F:F"))
+  - SUM(INDIRECT("'" & Config!B1 & "'!G:G"))
+  - SUM(INDIRECT("'" & Config!B1 & "'!H:H")),
+  "-"
+)
+```
 
 ### P3D Avg/Med
 
