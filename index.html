@@ -91,7 +91,7 @@ body {
   display: grid;
 
   /*
-    Column widths are set from CONFIG.columnWidths in JavaScript.
+    Column widths are set from CONFIG.columns[].width in JavaScript.
     Fallback keeps a 3-column grid if JavaScript fails early.
   */
   grid-template-columns: repeat(3, minmax(var(--cell-min-width), 1fr));
@@ -197,35 +197,37 @@ const CONFIG = {
   // 5 seconds.
   refreshMs: 5000,
 
-  // Display labels, in the order you want them shown on OBS.
-  labels: ["Ship Total", "Q2+ Avg/Med", "Clear"],
-
-  // Key names to search for in column A of the source sheet.
-  // Usually this should match CONFIG.labels.
-  // You can set aliases if the source sheet key differs from the display label.
-  // Use an array to provide fallback keys. The first non-"-" value is shown.
-  //
-  // Example:
-  // sourceKeys: ["Ship Total", ["Q2+ Avg/Med", "Q1 Avg/Med"], "Clear Rate"]
-  sourceKeys: ["Ship Total", ["Q2+ Avg/Med", "Q1 Avg/Med"], "Clear"],
-
-  // Column widths for CSS Grid.
-  // You can use any valid CSS grid width value:
-  //   "120px", "160px", "1fr", "auto", "minmax(120px, 1fr)"
-  //
-  // Examples:
-  //   Fixed widths:
-  //     ["220px", "220px", "160px"]
-  //
-  //   Wider clear column:
-  //     ["220px", "220px", "200px"]
-  //
-  //   Flexible OBS-width layout:
-  //     ["1.4fr", "1.4fr", "1fr"]
-  //
-  // If this array is shorter than CONFIG.labels, missing columns fall back to
-  // minmax(var(--cell-min-width), 1fr).
-  columnWidths: ["220px", "220px", "160px"],
+  // Display columns. Set enabled to false to hide a column.
+  // Use enableWhenSourceKeyReady/disableWhenSourceKeyReady to switch columns
+  // when a source value exists and is not "-".
+  columns: [
+    {
+      enabled: true,
+      labels: "Ship Total",
+      sourceKeys: "Ship Total",
+      width: "220px"
+    },
+    {
+      enabled: true,
+      labels: "Q1 Avg/Med",
+      sourceKeys: "Q1 Avg/Med",
+      disableWhenSourceKeyReady: "Q2+ Avg/Med",
+      width: "220px"
+    },
+    {
+      enabled: false,
+      labels: "Q2+ Avg/Med",
+      sourceKeys: "Q2+ Avg/Med",
+      enableWhenSourceKeyReady: "Q2+ Avg/Med",
+      width: "220px"
+    },
+    {
+      enabled: true,
+      labels: "Clear",
+      sourceKeys: "Clear",
+      width: "160px"
+    }
+  ],
 
   // Range to read from the key-value sheet.
   // A = key, B = value.
@@ -283,8 +285,15 @@ async function loadConfig() {
 }
 
 function initializeLabels() {
-  for (let col = 0; col < CONFIG.labels.length; col++) {
-    headerEls[col].textContent = CONFIG.labels[col] || "";
+  const columns = getActiveColumns();
+
+  for (let col = 0; col < headerEls.length; col++) {
+    const column = columns[col];
+    const label = column ? toArray(column.labels)[0] : "";
+
+    headerEls[col].style.display = column ? "" : "none";
+    valueEls[col].style.display = column ? "" : "none";
+    headerEls[col].textContent = label || "";
   }
 }
 
@@ -305,11 +314,35 @@ function applyColumnWidths() {
   const fallback = "minmax(var(--cell-min-width), 1fr)";
   const tracks = [];
 
-  for (let col = 0; col < CONFIG.labels.length; col++) {
-    tracks.push(sanitizeGridTrack(CONFIG.columnWidths[col] || fallback));
+  for (const column of getActiveColumns()) {
+    tracks.push(sanitizeGridTrack(column.width || fallback));
   }
 
   gridEl.style.gridTemplateColumns = tracks.join(" ");
+}
+
+function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+
+function sourceKeyIsReady(valueByKey, sourceKey) {
+  if (!valueByKey) return false;
+  const value = valueByKey.get(normalizeKey(sourceKey));
+  return value !== undefined && value.trim() !== "-";
+}
+
+function getActiveColumns(valueByKey = null) {
+  return CONFIG.columns.filter((column) => {
+    if (sourceKeyIsReady(valueByKey, column.enableWhenSourceKeyReady)) {
+      return true;
+    }
+
+    if (sourceKeyIsReady(valueByKey, column.disableWhenSourceKeyReady)) {
+      return false;
+    }
+
+    return column.enabled !== false;
+  });
 }
 
 function normalizeKey(value) {
@@ -371,11 +404,15 @@ function parseGoogleVisualizationResponse(text) {
     }
   }
 
-  const values = CONFIG.sourceKeys.map((sourceKey) => {
-    const keys = Array.isArray(sourceKey) ? sourceKey : [sourceKey];
+  const labels = [];
+  const values = getActiveColumns(valueByKey).map((column, index) => {
+    const keys = toArray(column.sourceKeys);
+    const labelOptions = toArray(column.labels);
     let fallbackValue = null;
+    let fallbackLabel = null;
 
-    for (const key of keys) {
+    for (let keyIndex = 0; keyIndex < keys.length; keyIndex++) {
+      const key = keys[keyIndex];
       const normalized = normalizeKey(key);
 
       if (!valueByKey.has(normalized)) {
@@ -383,16 +420,25 @@ function parseGoogleVisualizationResponse(text) {
       }
 
       const value = valueByKey.get(normalized);
-      if (fallbackValue === null) fallbackValue = value;
-      if (value.trim() !== "-") return value;
+      if (fallbackValue === null) {
+        fallbackValue = value;
+        fallbackLabel = labelOptions[keyIndex] || key;
+      }
+      if (value.trim() !== "-") {
+        labels[index] = labelOptions[keyIndex] || key;
+        return value;
+      }
     }
 
-    if (fallbackValue !== null) return fallbackValue;
+    if (fallbackValue !== null) {
+      labels[index] = fallbackLabel;
+      return fallbackValue;
+    }
     throw new Error(`Missing key: ${keys.join(" or ")}`);
   });
 
   return {
-    labels: CONFIG.labels.slice(),
+    labels,
     values
   };
 }
@@ -400,7 +446,15 @@ function parseGoogleVisualizationResponse(text) {
 function render(data) {
   document.body.classList.remove("has-error");
 
-  for (let col = 0; col < CONFIG.labels.length; col++) {
+  for (let col = 0; col < headerEls.length; col++) {
+    if (col >= data.labels.length) {
+      headerEls[col].style.display = "none";
+      valueEls[col].style.display = "none";
+      continue;
+    }
+
+    headerEls[col].style.display = "";
+    valueEls[col].style.display = "";
     headerEls[col].textContent = data.labels[col] || "";
     valueEls[col].textContent = data.values[col] || "";
   }
