@@ -173,12 +173,8 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 )
 ```
 
-## Font License
+## Third-Party Software
 
-This overlay includes `assets/3270-Regular.ttf` from
+This overlay bundles `assets/3270-Regular.ttf` from
 [rbanffy/3270font](https://github.com/rbanffy/3270font).
-
-The upstream `LICENSE.txt` lists copyright holders for the 3270font project
-and permits redistribution and use in source and binary forms under BSD-style
-terms. It also notes that the FontForge SFD font description file is optionally
-licensed under the SIL Open Font License v1.1 with no Reserved Font Name.
+The complete attribution and license notices are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
