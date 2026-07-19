@@ -2,7 +2,11 @@ const CONFIG_SHEET_NAME = "Config";
 
 function doPost(e) {
   const token = PropertiesService.getScriptProperties().getProperty("LCSTATS_TOKEN");
-  if (token && e.parameter.token !== token) {
+  if (!token) {
+    throw new Error("LCSTATS_TOKEN is not configured");
+  }
+
+  if (e?.parameter?.token !== token) {
     throw new Error("Invalid token");
   }
 
