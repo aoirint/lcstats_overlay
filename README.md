@@ -12,6 +12,41 @@ OBS Browser Source overlay for showing a Google Sheets key-value summary.
 
 `config.json` is ignored by Git so your spreadsheet ID stays local.
 
+## Privacy and Publication
+
+The spreadsheet ID is an identifier, not a secret or an access-control mechanism.
+The overlay must be able to read the `Value` sheet from OBS, so the spreadsheet is shared with
+"Anyone with the link" or published to the web.
+
+Google Sheets sharing applies to the entire spreadsheet, not an individual tab.
+Only store stream-safe aggregate values in a spreadsheet shared for the overlay.
+Keep run history, raw JSON, player information, or any other non-public data in a separate private spreadsheet.
+
+Do not commit `config.json`, a web app URL containing a token, or exported spreadsheet data.
+Avoid showing a token in a stream, screenshot, or OBS source configuration.
+
+## Apps Script Ingestion Security
+
+`code.gs` accepts game-stat POSTs through an Apps Script web app.
+Every request requires the `LCSTATS_TOKEN` script property; the endpoint refuses all writes until it is configured.
+
+1. Open the Apps Script project that contains `code.gs`.
+2. In **Project Settings**, add a Script property named `LCSTATS_TOKEN`.
+   Set it to a long, randomly generated value.
+3. Deploy the script as a web app from **Deploy > New deployment > Web app**.
+   Select the execution identity that has access to the destination spreadsheet.
+4. Configure the game-side sender to POST to the deployment's `/exec` URL with the same token as a `token` query or form parameter.
+
+Apps Script web-app access and execution identity are separate deployment settings.
+If the sender cannot authenticate with Google, the web app may need anonymous access, but the token remains mandatory and must be kept secret.
+Rotate `LCSTATS_TOKEN` immediately if its URL or value is exposed.
+
+Use the `/dev` URL only for development; it is available only to script editors.
+Use a versioned `/exec` deployment for normal operation.
+
+See Google's [Web Apps guide](https://developers.google.com/apps-script/guides/web) and
+[Properties Service guide](https://developers.google.com/apps-script/guides/properties) for deployment and property details.
+
 ## Spreadsheet Format
 
 The overlay reads the `Value` sheet as a vertical key-value table.
