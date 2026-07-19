@@ -1,12 +1,12 @@
 lockfile_version: '1'
-generated_at: '2026-07-19T15:59:02.290314+00:00'
+generated_at: '2026-07-19T16:14:01.766205+00:00'
 apm_version: 0.26.0
 dependencies:
 - repo_url: aoirint/skills
   name: apm-usage
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/apm-usage
   is_virtual: true
@@ -17,23 +17,21 @@ dependencies:
   - .agents/skills/apm-usage/SKILL.md
   - .agents/skills/apm-usage/agents/openai.yaml
   - .agents/skills/apm-usage/references/apm-bootstrap.json
-  - .agents/skills/apm-usage/references/apm-install.md
   - .agents/skills/apm-usage/scripts/propose_bootstrap_update.py
   - .agents/skills/apm-usage/scripts/propose_bootstrap_update.py.lock
   deployed_file_hashes:
     .agents/skills/apm-usage/README.md: sha256:70351aaebf54291433dfcff86280e87edc757ff4e93e506aa1e8f06a0b913f06
-    .agents/skills/apm-usage/SKILL.md: sha256:65a483eb7f3f062d5043d77feadeb9bd1635aaaca942c055f8be2b448f1125d4
-    .agents/skills/apm-usage/agents/openai.yaml: sha256:63e080cbffe50033ef8b46e24d4436ef40bc1206a79d055814262ae053c946a4
+    .agents/skills/apm-usage/SKILL.md: sha256:4ab1b61b61691c3cde11d0a10c9e8bcccb80479f74495dc61d02e8eb763b731b
+    .agents/skills/apm-usage/agents/openai.yaml: sha256:931ed250f3abe81dcad27da5b668d7546cd65f528cd37de754dee4c9df1905e0
     .agents/skills/apm-usage/references/apm-bootstrap.json: sha256:3f0be975b2c72da161bc9e65eb57b66f0b0554827d21b37017928e4e858a5c17
-    .agents/skills/apm-usage/references/apm-install.md: sha256:25132995b7a2ba2ce5092e543d5c8449d5c78a312f68a39a7338e112d018850d
     .agents/skills/apm-usage/scripts/propose_bootstrap_update.py: sha256:e29c8a695d1a0d8f9c44b612a58c9462e55f754ef8b739ff7f01d4e1dc2d7530
     .agents/skills/apm-usage/scripts/propose_bootstrap_update.py.lock: sha256:016afc221516f1724533f1623ec77ef8a9a80c06a1ffae431f32f5e063e59986
-  content_hash: sha256:cd33b230efcc3966f4bfeb2cf394242069e86b2dad78e92a0abe57b24fd1e725
+  content_hash: sha256:ced3e7d4fa0f31de8383591dd3cf594db181b4feeaa8f4244a1a8f66599fe0f3
 - repo_url: aoirint/skills
   name: changelog-workflow
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/changelog-workflow
   is_virtual: true
@@ -51,8 +49,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: code-quality-check
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/code-quality-check
   is_virtual: true
@@ -70,8 +68,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: commit-message-quality-check
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/commit-message-quality-check
   is_virtual: true
@@ -89,8 +87,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: git-worktree-workflow
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/git-worktree-workflow
   is_virtual: true
@@ -108,8 +106,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: github-actions-quality-check
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/github-actions-quality-check
   is_virtual: true
@@ -127,8 +125,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: gitignore-workflow
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/gitignore-workflow
   is_virtual: true
@@ -146,8 +144,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: issue-quality-check
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/issue-quality-check
   is_virtual: true
@@ -165,8 +163,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: prose-quality-check
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/prose-quality-check
   is_virtual: true
@@ -184,8 +182,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: pull-request-quality-check
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/pull-request-quality-check
   is_virtual: true
@@ -205,8 +203,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: release-note-workflow
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/release-note-workflow
   is_virtual: true
@@ -224,8 +222,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: rollout-workflow
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/rollout-workflow
   is_virtual: true
@@ -243,8 +241,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: security-check
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/security-check
   is_virtual: true
@@ -264,8 +262,8 @@ dependencies:
 - repo_url: aoirint/skills
   name: software-documentation-maintenance
   host: github.com
-  resolved_commit: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
-  resolved_ref: dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  resolved_commit: 312da249a649bbb400c0eed42e518d24440e8095
+  resolved_ref: 312da249a649bbb400c0eed42e518d24440e8095
   version: unknown
   virtual_path: .apm/skills/software-documentation-maintenance
   is_virtual: true
@@ -307,7 +305,7 @@ deployments:
   owners:
   - aoirint/skills/.apm/skills/apm-usage
   active_owner: aoirint/skills/.apm/skills/apm-usage
-  content_hash: sha256:65a483eb7f3f062d5043d77feadeb9bd1635aaaca942c055f8be2b448f1125d4
+  content_hash: sha256:4ab1b61b61691c3cde11d0a10c9e8bcccb80479f74495dc61d02e8eb763b731b
 - kind: project-relative
   target: codex
   value: .agents/skills/apm-usage/agents/openai.yaml
@@ -316,7 +314,7 @@ deployments:
   owners:
   - aoirint/skills/.apm/skills/apm-usage
   active_owner: aoirint/skills/.apm/skills/apm-usage
-  content_hash: sha256:63e080cbffe50033ef8b46e24d4436ef40bc1206a79d055814262ae053c946a4
+  content_hash: sha256:931ed250f3abe81dcad27da5b668d7546cd65f528cd37de754dee4c9df1905e0
 - kind: project-relative
   target: codex
   value: .agents/skills/apm-usage/references/apm-bootstrap.json
@@ -326,15 +324,6 @@ deployments:
   - aoirint/skills/.apm/skills/apm-usage
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:3f0be975b2c72da161bc9e65eb57b66f0b0554827d21b37017928e4e858a5c17
-- kind: project-relative
-  target: codex
-  value: .agents/skills/apm-usage/references/apm-install.md
-  runtime: null
-  scope: project
-  owners:
-  - aoirint/skills/.apm/skills/apm-usage
-  active_owner: aoirint/skills/.apm/skills/apm-usage
-  content_hash: sha256:25132995b7a2ba2ce5092e543d5c8449d5c78a312f68a39a7338e112d018850d
 - kind: project-relative
   target: codex
   value: .agents/skills/apm-usage/scripts/propose_bootstrap_update.py
