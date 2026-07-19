@@ -1,1 +1,8 @@
 config.json
+
+
+# APM dependencies
+apm_modules/
+
+# APM-managed agent Skill deployments
+.agents/

@@ -1,0 +1,30 @@
+name: lcstats-overlay
+version: 1.0.0
+description: APM-managed maintainer skills for lcstats_overlay
+author: aoirint
+# Which agent platforms to deploy to.
+# Resolution order: --target flag > this field > auto-detect from filesystem.
+# Accepted values: agent-skills, antigravity, claude, codex, copilot, cursor, gemini, kiro, opencode, windsurf
+targets:
+- codex
+dependencies:
+  # Maintainer-approved cooldown exception (2026-07-20): use the current
+  # reviewed aoirint/skills commit while the maintainer is publishing it.
+  apm:
+  - aoirint/skills/.apm/skills/apm-usage#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/changelog-workflow#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/code-quality-check#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/commit-message-quality-check#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/git-worktree-workflow#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/github-actions-quality-check#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/gitignore-workflow#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/issue-quality-check#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/prose-quality-check#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/pull-request-quality-check#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/release-note-workflow#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/rollout-workflow#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/security-check#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  - aoirint/skills/.apm/skills/software-documentation-maintenance#dc2137b7c38f62399c0fad2173a4ed92a8de8df8
+  mcp: []
+includes: auto
+scripts: {}
