@@ -35,10 +35,12 @@ Every request requires the `LCSTATS_TOKEN` script property; the endpoint refuses
    Set it to a long, randomly generated value.
 3. Deploy the script as a web app from **Deploy > New deployment > Web app**.
    Select the execution identity that has access to the destination spreadsheet.
-4. Configure the game-side sender to POST to the deployment's `/exec` URL with the same token as a `token` query or form parameter.
+4. Configure the game-side sender to POST to the deployment's `/exec` URL with
+    the same token as a `token` query or form parameter.
 
 Apps Script web-app access and execution identity are separate deployment settings.
-If the sender cannot authenticate with Google, the web app may need anonymous access, but the token remains mandatory and must be kept secret.
+If the sender cannot authenticate with Google, the web app may need anonymous
+access, but the token remains mandatory and must be kept secret.
 Rotate `LCSTATS_TOKEN` immediately if its URL or value is exposed.
 
 Use the `/dev` URL only for development; it is available only to script editors.
@@ -69,7 +71,9 @@ Add `index.html` as a Browser Source. Recommended source settings:
 - Width around `720`
 - Height around `120`
 
-If your OBS/Chromium environment blocks `fetch("./config.json")` from a local file, serve this folder with a local static server and use the localhost URL in OBS.
+If your OBS/Chromium environment blocks `fetch("./config.json")` from a local
+file, serve this folder with a local static server and use the localhost URL in
+OBS.
 
 Example:
 
@@ -104,7 +108,7 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 
 ### Ship Total
 
-```
+```text
 =IFERROR(
   SUM(INDIRECT("'" & Config!B1 & "'!D:D"))
   + SUM(INDIRECT("'" & Config!B1 & "'!F:F"))
@@ -116,7 +120,7 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 
 ### Q1 Avg/Med
 
-```
+```text
 =IFERROR(
   LET(
     values,
@@ -134,7 +138,7 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 
 ### Q2+ Avg/Med
 
-```
+```text
 =IFERROR(
   LET(
     values,
@@ -152,7 +156,7 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 
 ### Clear
 
-```
+```text
 =IFERROR(
   LET(
     collected,
