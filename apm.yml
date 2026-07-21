@@ -1,5 +1,5 @@
 name: lcstats-overlay
-version: 1.0.0
+version: 0.0.0
 description: APM-managed maintainer skills for lcstats_overlay
 author: aoirint
 # Which agent platforms to deploy to.
@@ -8,23 +8,23 @@ author: aoirint
 targets:
 - codex
 dependencies:
-  # Maintainer-approved cooldown exception (2026-07-20): use the current
-  # reviewed aoirint/skills commit while the maintainer is publishing it.
+  # Maintainer-approved direct aoirint/skills cooldown waiver (2026-07-21).
+  # Dependencies of aoirint/skills are not covered by this waiver.
   apm:
-  - aoirint/skills/.apm/skills/apm-usage#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/changelog-workflow#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/code-quality-check#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/commit-message-quality-check#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/git-worktree-workflow#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/github-actions-quality-check#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/gitignore-workflow#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/issue-quality-check#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/prose-quality-check#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/pull-request-quality-check#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/release-note-workflow#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/rollout-workflow#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/security-check#312da249a649bbb400c0eed42e518d24440e8095
-  - aoirint/skills/.apm/skills/software-documentation-maintenance#312da249a649bbb400c0eed42e518d24440e8095
+  - aoirint/skills/.apm/skills/apm-usage#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/changelog-workflow#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/code-quality-check#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/commit-message-quality-check#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/git-worktree-workflow#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/github-actions-quality-check#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/gitignore-workflow#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/issue-quality-check#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/prose-quality-check#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/pull-request-quality-check#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/release-note-workflow#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/rollout-workflow#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/security-check#8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  - aoirint/skills/.apm/skills/software-documentation-maintenance#8a315e49001597b260c1c2e1b5b348ebedba4f0c
   mcp: []
 includes: auto
 scripts: {}

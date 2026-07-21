@@ -52,3 +52,20 @@ trademarks of Canonical Ltd. The Fontforge SFD font description file is
 optionally licensed under the SIL Open Font License v1.1 with no Reserved Font
 Name. This license is available with a FAQ at http://scripts.sil.org/OFL.
 ```
+
+## aoirint/skills
+
+- Source: [aoirint/skills](https://github.com/aoirint/skills), selected Skill
+  directories under `.apm/skills/`
+- Pinned commit:
+  [`8a315e49001597b260c1c2e1b5b348ebedba4f0c`](https://github.com/aoirint/skills/tree/8a315e49001597b260c1c2e1b5b348ebedba4f0c)
+- Deployed paths: selected directories under `.agents/skills/`, as recorded in
+  `apm.lock.yaml`
+- License: MIT; see the
+  [upstream license](https://github.com/aoirint/skills/blob/8a315e49001597b260c1c2e1b5b348ebedba4f0c/LICENSE)
+- Copyright: Copyright (c) 2026 aoirint
+- Notice: the selected Skill directories contain no additional copyright or
+  NOTICE files.
+- Cooldown: the maintainer waived the waiting period only for this direct
+  `aoirint/skills` commit. Dependencies remain subject to normal review and
+  cooldown requirements.
