@@ -1,9 +1,9 @@
 lockfile_version: '1'
-generated_at: '2026-07-21T01:25:07.353964+00:00'
-apm_version: 0.25.0
+generated_at: '2026-07-26T00:13:39.577612+00:00'
+apm_version: 0.26.0
 dependencies:
 - repo_url: aoirint/skills
-  name: skills
+  name: apm-usage
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -32,7 +32,7 @@ dependencies:
     .agents/skills/apm-usage/scripts/propose_bootstrap_update.py.lock: sha256:016afc221516f1724533f1623ec77ef8a9a80c06a1ffae431f32f5e063e59986
   content_hash: sha256:24e95112e268002a7039071fe1f101635e1e3180ee849cdb7b8730ac31de6645
 - repo_url: aoirint/skills
-  name: skills
+  name: changelog-workflow
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -51,7 +51,7 @@ dependencies:
     .agents/skills/changelog-workflow/agents/openai.yaml: sha256:6264e6dbd0433ab63370e15033ecb94da8dd131c4edcb1d3f2b9abdeb4f680f1
   content_hash: sha256:8282d6fa154f65648448e21bcf5556a4249a501a2fdf535ad686dc5221c60ec0
 - repo_url: aoirint/skills
-  name: skills
+  name: code-quality-check
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -70,10 +70,10 @@ dependencies:
     .agents/skills/code-quality-check/agents/openai.yaml: sha256:69a8a75579e3b47dc69a176417b97441adf81bc54984d3f6bc114e47a68bc9b3
   content_hash: sha256:441e7e4c984be61045b2adfbb09adc58814ef35985b14b7fb8051b5ffd91c604
 - repo_url: aoirint/skills
-  name: skills
+  name: commit-message-quality-check
   host: github.com
-  resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
-  resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  resolved_commit: 8c671f524fb5df6b9def895f8b60e9a359b07644
+  resolved_ref: 8c671f524fb5df6b9def895f8b60e9a359b07644
   version: unknown
   virtual_path: .apm/skills/commit-message-quality-check
   is_virtual: true
@@ -85,14 +85,14 @@ dependencies:
   - .agents/skills/commit-message-quality-check/agents/openai.yaml
   deployed_file_hashes:
     .agents/skills/commit-message-quality-check/README.md: sha256:c23949080d05f47cce728410ca3190225397aa41ac2015c6f02ee478ec412a24
-    .agents/skills/commit-message-quality-check/SKILL.md: sha256:1fc20d00d21f951ffde4323eefedc02cdf623e3b92c0021163c1d3a833b4a00b
+    .agents/skills/commit-message-quality-check/SKILL.md: sha256:db272bb7467bcb6a6c3d837dec60a34f7081c135fcd40a9e00cf4a84e29ffabe
     .agents/skills/commit-message-quality-check/agents/openai.yaml: sha256:faffd948a0989dcfc87dcd3b0580c4a7003d01ef436e66dab9f280df57de652c
-  content_hash: sha256:e8e8076052a7643dcec9ec1c743915c1e6359642818fbb8f1aa81f2947b8cef6
+  content_hash: sha256:292200636446d9dbc8798c38c283a33163dbca057245702ee43499bdce1e3f7f
 - repo_url: aoirint/skills
-  name: skills
+  name: git-worktree-workflow
   host: github.com
-  resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
-  resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  resolved_commit: 8c671f524fb5df6b9def895f8b60e9a359b07644
+  resolved_ref: 8c671f524fb5df6b9def895f8b60e9a359b07644
   version: unknown
   virtual_path: .apm/skills/git-worktree-workflow
   is_virtual: true
@@ -104,11 +104,11 @@ dependencies:
   - .agents/skills/git-worktree-workflow/agents/openai.yaml
   deployed_file_hashes:
     .agents/skills/git-worktree-workflow/README.md: sha256:fa6483b5919a01b84fa0d6ffcbaae20b84ed3807e18029e8807e61b0ee4f9de9
-    .agents/skills/git-worktree-workflow/SKILL.md: sha256:de1da6f326937196d7e0909d2fc57ed56d7db0dc2da7bc2990e3216ac29f3a7e
+    .agents/skills/git-worktree-workflow/SKILL.md: sha256:83ee54b3fd4c9620d4b70caae6701af40c34e9bf730cf6d69540f7f78d526aa4
     .agents/skills/git-worktree-workflow/agents/openai.yaml: sha256:3eb9da73e7a041e77d82f0d5c3a8c67e914575cff8651b71d077db30fe3da99a
-  content_hash: sha256:25bf4c738ca5c6d4db24c9a839767d46e2c243f5c1e1f84851160777162abf06
+  content_hash: sha256:707e828dcf0878d799ead309ef44e4831590b5e6b0c29a130632d16c911405c5
 - repo_url: aoirint/skills
-  name: skills
+  name: github-actions-quality-check
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -129,7 +129,7 @@ dependencies:
     .agents/skills/github-actions-quality-check/references/runner-selection.md: sha256:6e9929a316ba9efbf6171366de0d1a3c976aee73d22c26b2d1ec33017af6f164
   content_hash: sha256:eb69d42c48233286daa6ceda0e8c258fba696328550a708ea57b53bc5e2eb4b8
 - repo_url: aoirint/skills
-  name: skills
+  name: gitignore-workflow
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -148,7 +148,7 @@ dependencies:
     .agents/skills/gitignore-workflow/agents/openai.yaml: sha256:f6a9b176003028588ff4c1d9ee4e23c625892d00b65086bf4b6b26a3f896030d
   content_hash: sha256:6a77dad7d78f014bfb8102a1aabef0e44877f5b2023088c2fc2bdda63437e79b
 - repo_url: aoirint/skills
-  name: skills
+  name: issue-quality-check
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -167,7 +167,7 @@ dependencies:
     .agents/skills/issue-quality-check/agents/openai.yaml: sha256:e54aa6bbae7cf7d2cf57a95e5749cc1527238295e420ac00d96902ce114e9cdb
   content_hash: sha256:b96e337772640003c8b38dcf7488845dd54bf4a22d4c7e0fd818b1067ace6061
 - repo_url: aoirint/skills
-  name: skills
+  name: prose-quality-check
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -186,10 +186,10 @@ dependencies:
     .agents/skills/prose-quality-check/agents/openai.yaml: sha256:b83e0a5d151e6e20df6f7d97f268955c6abfd105d53820f6baad0de8403fc062
   content_hash: sha256:64b42b29b09a51d21ff699c9a2c32f44c64e548049d40e6d23862ea67eb4deae
 - repo_url: aoirint/skills
-  name: skills
+  name: pull-request-quality-check
   host: github.com
-  resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
-  resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
+  resolved_commit: 8c671f524fb5df6b9def895f8b60e9a359b07644
+  resolved_ref: 8c671f524fb5df6b9def895f8b60e9a359b07644
   version: unknown
   virtual_path: .apm/skills/pull-request-quality-check
   is_virtual: true
@@ -200,14 +200,16 @@ dependencies:
   - .agents/skills/pull-request-quality-check/SKILL.md
   - .agents/skills/pull-request-quality-check/agents/openai.yaml
   - .agents/skills/pull-request-quality-check/references/fallback-pr-body.md
+  - .agents/skills/pull-request-quality-check/scripts/check_llm_disclosure.py
   deployed_file_hashes:
     .agents/skills/pull-request-quality-check/README.md: sha256:5c15de701adc508b9dd828846317f47b0f5b925c5a8842b6c32b4d9e3946e11f
-    .agents/skills/pull-request-quality-check/SKILL.md: sha256:0636f75da6328fbcf0f46fa4d6ce24b4f4813c89d8607482e52ef597d7fd3d49
-    .agents/skills/pull-request-quality-check/agents/openai.yaml: sha256:1ddb931336ca5ce10b9accf92787e36168c1c71a4b999bd85f130144e778bfa4
-    .agents/skills/pull-request-quality-check/references/fallback-pr-body.md: sha256:b381d75f9d1f525ce72f594b1cd8a8de37539bf29c5750c139bbd7113f606dfc
-  content_hash: sha256:994a708619c8cc2f83335dd5c4f8e25dd7c0ce5e2fd82338585643726e446e67
+    .agents/skills/pull-request-quality-check/SKILL.md: sha256:e79369ec883a152f51b40cc48f3e2664f07bcfea3af7d424fc0eef478b047ed5
+    .agents/skills/pull-request-quality-check/agents/openai.yaml: sha256:bfa37ecafec102caaa9ebe270428b423eae5451f9a0da1d6e02b419cde47f090
+    .agents/skills/pull-request-quality-check/references/fallback-pr-body.md: sha256:b98239e7d4cdddd8e267ab155f4e4c38fcc514526d9a32f13fcd5b21a1c07eb2
+    .agents/skills/pull-request-quality-check/scripts/check_llm_disclosure.py: sha256:bc9c5cbd8efa77095eac42e53da714ed8dff86fa3b0e7870fc3e7eca1ca36e20
+  content_hash: sha256:527c3f0c92a01d10c46ab83a34dba1d7c6067175ca69a81b1b5559e8e6461f61
 - repo_url: aoirint/skills
-  name: skills
+  name: release-note-workflow
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -226,7 +228,7 @@ dependencies:
     .agents/skills/release-note-workflow/agents/openai.yaml: sha256:4413fdfcae90efd6d4de975f2e7c53625bdf1e214a32e1b54a65fff9f6258453
   content_hash: sha256:01decbc7be81f3f8eb2d12318cde93095e5f8026027bc5b4135e4703c5e74571
 - repo_url: aoirint/skills
-  name: skills
+  name: rollout-workflow
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -245,7 +247,7 @@ dependencies:
     .agents/skills/rollout-workflow/agents/openai.yaml: sha256:543a7befd986c51540ef35603fe63830f5032dc02b31f89e7f2179df3b3ca5dc
   content_hash: sha256:71b730178f4094bca2de38c3c3c2b6cc3400b87f22a62990470c8fb5dce78729
 - repo_url: aoirint/skills
-  name: skills
+  name: security-check
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -268,7 +270,7 @@ dependencies:
     .agents/skills/security-check/references/external-code-execution.md: sha256:87ca817baa02ef6b955e5878f0cd79c875abdb0be6e0177cfce158968e628bc3
   content_hash: sha256:f8219f4bab16c76a3fe8fc90071bb1a4f2231910b398d02b8cb292c4ae8583de
 - repo_url: aoirint/skills
-  name: skills
+  name: software-documentation-maintenance
   host: github.com
   resolved_commit: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
   resolved_ref: 8a315e49001597b260c1c2e1b5b348ebedba4f0c
@@ -288,7 +290,7 @@ dependencies:
   content_hash: sha256:ab4d649ede95be638990e35c85749def5aa6c448eca77bc5f722e3fa3040c737
 deployments:
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage
   runtime: null
   scope: project
@@ -297,7 +299,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage/README.md
   runtime: null
   scope: project
@@ -306,7 +308,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:70351aaebf54291433dfcff86280e87edc757ff4e93e506aa1e8f06a0b913f06
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage/SKILL.md
   runtime: null
   scope: project
@@ -315,7 +317,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:a7cd4f86aea7ab60d4fec31ea40f75a3a36eccfed1de4646d9b3a45a36161b3f
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage/agents/openai.yaml
   runtime: null
   scope: project
@@ -324,7 +326,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:931ed250f3abe81dcad27da5b668d7546cd65f528cd37de754dee4c9df1905e0
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage/assets/check-apm-project/action.yml
   runtime: null
   scope: project
@@ -333,7 +335,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:108bc5e9964026880fb49086728f8458b16174f33636dea79276bd286505bbd4
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage/references/apm-bootstrap.json
   runtime: null
   scope: project
@@ -342,7 +344,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:e78b1b181f73ec6c02ed4a6b5839388911d9238606e9575ff6e9f29e7dcfbae4
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage/references/ci-guards.md
   runtime: null
   scope: project
@@ -351,7 +353,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:9045d6923cd22b2452d8d73f55c4cd5cf90d3b1369731f692a69e6de93bb64df
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage/scripts/propose_bootstrap_update.py
   runtime: null
   scope: project
@@ -360,7 +362,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:e29c8a695d1a0d8f9c44b612a58c9462e55f754ef8b739ff7f01d4e1dc2d7530
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/apm-usage/scripts/propose_bootstrap_update.py.lock
   runtime: null
   scope: project
@@ -369,7 +371,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/apm-usage
   content_hash: sha256:016afc221516f1724533f1623ec77ef8a9a80c06a1ffae431f32f5e063e59986
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/changelog-workflow
   runtime: null
   scope: project
@@ -378,7 +380,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/changelog-workflow
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/changelog-workflow/README.md
   runtime: null
   scope: project
@@ -387,7 +389,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/changelog-workflow
   content_hash: sha256:7ef8167d26522d95f62b9f11d752487d62b6bfdae05850315189fbe2a19fed83
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/changelog-workflow/SKILL.md
   runtime: null
   scope: project
@@ -396,7 +398,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/changelog-workflow
   content_hash: sha256:1c5eb80203e86406d7d3f83fcb66500d56f062284c62dd7f718989260bbd3a4a
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/changelog-workflow/agents/openai.yaml
   runtime: null
   scope: project
@@ -405,7 +407,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/changelog-workflow
   content_hash: sha256:6264e6dbd0433ab63370e15033ecb94da8dd131c4edcb1d3f2b9abdeb4f680f1
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/code-quality-check
   runtime: null
   scope: project
@@ -414,7 +416,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/code-quality-check
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/code-quality-check/README.md
   runtime: null
   scope: project
@@ -423,7 +425,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/code-quality-check
   content_hash: sha256:b2cfd8bf9c3c7bd16cf86718877fa025396d15a380de88045122c4d162682cc2
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/code-quality-check/SKILL.md
   runtime: null
   scope: project
@@ -432,7 +434,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/code-quality-check
   content_hash: sha256:30d64d4b25d9be96567f3e5f7106609e1a4d9a32b3c3d520d4b3aca459631990
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/code-quality-check/agents/openai.yaml
   runtime: null
   scope: project
@@ -441,7 +443,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/code-quality-check
   content_hash: sha256:69a8a75579e3b47dc69a176417b97441adf81bc54984d3f6bc114e47a68bc9b3
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/commit-message-quality-check
   runtime: null
   scope: project
@@ -450,7 +452,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/commit-message-quality-check
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/commit-message-quality-check/README.md
   runtime: null
   scope: project
@@ -459,16 +461,16 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/commit-message-quality-check
   content_hash: sha256:c23949080d05f47cce728410ca3190225397aa41ac2015c6f02ee478ec412a24
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/commit-message-quality-check/SKILL.md
   runtime: null
   scope: project
   owners:
   - aoirint/skills/.apm/skills/commit-message-quality-check
   active_owner: aoirint/skills/.apm/skills/commit-message-quality-check
-  content_hash: sha256:1fc20d00d21f951ffde4323eefedc02cdf623e3b92c0021163c1d3a833b4a00b
+  content_hash: sha256:db272bb7467bcb6a6c3d837dec60a34f7081c135fcd40a9e00cf4a84e29ffabe
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/commit-message-quality-check/agents/openai.yaml
   runtime: null
   scope: project
@@ -477,7 +479,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/commit-message-quality-check
   content_hash: sha256:faffd948a0989dcfc87dcd3b0580c4a7003d01ef436e66dab9f280df57de652c
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/git-worktree-workflow
   runtime: null
   scope: project
@@ -486,7 +488,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/git-worktree-workflow
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/git-worktree-workflow/README.md
   runtime: null
   scope: project
@@ -495,16 +497,16 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/git-worktree-workflow
   content_hash: sha256:fa6483b5919a01b84fa0d6ffcbaae20b84ed3807e18029e8807e61b0ee4f9de9
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/git-worktree-workflow/SKILL.md
   runtime: null
   scope: project
   owners:
   - aoirint/skills/.apm/skills/git-worktree-workflow
   active_owner: aoirint/skills/.apm/skills/git-worktree-workflow
-  content_hash: sha256:de1da6f326937196d7e0909d2fc57ed56d7db0dc2da7bc2990e3216ac29f3a7e
+  content_hash: sha256:83ee54b3fd4c9620d4b70caae6701af40c34e9bf730cf6d69540f7f78d526aa4
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/git-worktree-workflow/agents/openai.yaml
   runtime: null
   scope: project
@@ -513,7 +515,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/git-worktree-workflow
   content_hash: sha256:3eb9da73e7a041e77d82f0d5c3a8c67e914575cff8651b71d077db30fe3da99a
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/github-actions-quality-check
   runtime: null
   scope: project
@@ -522,7 +524,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/github-actions-quality-check
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/github-actions-quality-check/README.md
   runtime: null
   scope: project
@@ -531,7 +533,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/github-actions-quality-check
   content_hash: sha256:a0767309bb84d170bc30070099a9f091b4c67cc00f790da88799685ab6bbaf5e
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/github-actions-quality-check/SKILL.md
   runtime: null
   scope: project
@@ -540,7 +542,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/github-actions-quality-check
   content_hash: sha256:1f2c556cda51ab47553bb7b2b9fbdcd4baa3709b2ba8d412c58397c6c5c5732d
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/github-actions-quality-check/agents/openai.yaml
   runtime: null
   scope: project
@@ -549,7 +551,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/github-actions-quality-check
   content_hash: sha256:63b8022771cf5e036033c39fd700adf14b1ab23f7df78699474e472a7c28e73d
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/github-actions-quality-check/references/runner-selection.md
   runtime: null
   scope: project
@@ -558,7 +560,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/github-actions-quality-check
   content_hash: sha256:6e9929a316ba9efbf6171366de0d1a3c976aee73d22c26b2d1ec33017af6f164
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/gitignore-workflow
   runtime: null
   scope: project
@@ -567,7 +569,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/gitignore-workflow
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/gitignore-workflow/README.md
   runtime: null
   scope: project
@@ -576,7 +578,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/gitignore-workflow
   content_hash: sha256:0de188ebcdd40ea1aec701410e1c2182049b66bc4ec4d83a3bf55685b4267d47
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/gitignore-workflow/SKILL.md
   runtime: null
   scope: project
@@ -585,7 +587,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/gitignore-workflow
   content_hash: sha256:2ef38f42e418c10e0ba7632e3ba37614df97044dfa8847ad1338e6c4c896c089
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/gitignore-workflow/agents/openai.yaml
   runtime: null
   scope: project
@@ -594,7 +596,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/gitignore-workflow
   content_hash: sha256:f6a9b176003028588ff4c1d9ee4e23c625892d00b65086bf4b6b26a3f896030d
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/issue-quality-check
   runtime: null
   scope: project
@@ -603,7 +605,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/issue-quality-check
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/issue-quality-check/README.md
   runtime: null
   scope: project
@@ -612,7 +614,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/issue-quality-check
   content_hash: sha256:c4b5915483347d84053b37076071b9f5367caa38e75ed5d1821d0cbe201cc59c
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/issue-quality-check/SKILL.md
   runtime: null
   scope: project
@@ -621,7 +623,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/issue-quality-check
   content_hash: sha256:e17e0d268e2345b157aca13d028b3f2c10489be334de4850cf453f812f6d9dc9
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/issue-quality-check/agents/openai.yaml
   runtime: null
   scope: project
@@ -630,7 +632,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/issue-quality-check
   content_hash: sha256:e54aa6bbae7cf7d2cf57a95e5749cc1527238295e420ac00d96902ce114e9cdb
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/prose-quality-check
   runtime: null
   scope: project
@@ -639,7 +641,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/prose-quality-check
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/prose-quality-check/README.md
   runtime: null
   scope: project
@@ -648,7 +650,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/prose-quality-check
   content_hash: sha256:8e4d9f8f8fdfba1cf7fe71fa88cac6baffa0d3c7616f744c0e3b1add102be5e7
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/prose-quality-check/SKILL.md
   runtime: null
   scope: project
@@ -657,7 +659,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/prose-quality-check
   content_hash: sha256:89f553473800fae3801ccfc9cd2a0a58bc647d17663bc39cd653bff4442367fd
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/prose-quality-check/agents/openai.yaml
   runtime: null
   scope: project
@@ -666,7 +668,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/prose-quality-check
   content_hash: sha256:b83e0a5d151e6e20df6f7d97f268955c6abfd105d53820f6baad0de8403fc062
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/pull-request-quality-check
   runtime: null
   scope: project
@@ -675,7 +677,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/pull-request-quality-check
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/pull-request-quality-check/README.md
   runtime: null
   scope: project
@@ -684,34 +686,43 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/pull-request-quality-check
   content_hash: sha256:5c15de701adc508b9dd828846317f47b0f5b925c5a8842b6c32b4d9e3946e11f
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/pull-request-quality-check/SKILL.md
   runtime: null
   scope: project
   owners:
   - aoirint/skills/.apm/skills/pull-request-quality-check
   active_owner: aoirint/skills/.apm/skills/pull-request-quality-check
-  content_hash: sha256:0636f75da6328fbcf0f46fa4d6ce24b4f4813c89d8607482e52ef597d7fd3d49
+  content_hash: sha256:e79369ec883a152f51b40cc48f3e2664f07bcfea3af7d424fc0eef478b047ed5
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/pull-request-quality-check/agents/openai.yaml
   runtime: null
   scope: project
   owners:
   - aoirint/skills/.apm/skills/pull-request-quality-check
   active_owner: aoirint/skills/.apm/skills/pull-request-quality-check
-  content_hash: sha256:1ddb931336ca5ce10b9accf92787e36168c1c71a4b999bd85f130144e778bfa4
+  content_hash: sha256:bfa37ecafec102caaa9ebe270428b423eae5451f9a0da1d6e02b419cde47f090
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/pull-request-quality-check/references/fallback-pr-body.md
   runtime: null
   scope: project
   owners:
   - aoirint/skills/.apm/skills/pull-request-quality-check
   active_owner: aoirint/skills/.apm/skills/pull-request-quality-check
-  content_hash: sha256:b381d75f9d1f525ce72f594b1cd8a8de37539bf29c5750c139bbd7113f606dfc
+  content_hash: sha256:b98239e7d4cdddd8e267ab155f4e4c38fcc514526d9a32f13fcd5b21a1c07eb2
 - kind: project-relative
-  target: agents
+  target: codex
+  value: .agents/skills/pull-request-quality-check/scripts/check_llm_disclosure.py
+  runtime: null
+  scope: project
+  owners:
+  - aoirint/skills/.apm/skills/pull-request-quality-check
+  active_owner: aoirint/skills/.apm/skills/pull-request-quality-check
+  content_hash: sha256:bc9c5cbd8efa77095eac42e53da714ed8dff86fa3b0e7870fc3e7eca1ca36e20
+- kind: project-relative
+  target: codex
   value: .agents/skills/release-note-workflow
   runtime: null
   scope: project
@@ -720,7 +731,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/release-note-workflow
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/release-note-workflow/README.md
   runtime: null
   scope: project
@@ -729,7 +740,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/release-note-workflow
   content_hash: sha256:2317bd380a014d3d7b469d95f2d2b8a36f6f4eccad947c265e3653e35a9f6394
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/release-note-workflow/SKILL.md
   runtime: null
   scope: project
@@ -738,7 +749,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/release-note-workflow
   content_hash: sha256:01dea76b1fad92744c0128693f61edfceca884e3965876d31627f40b7b6cff8e
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/release-note-workflow/agents/openai.yaml
   runtime: null
   scope: project
@@ -747,7 +758,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/release-note-workflow
   content_hash: sha256:4413fdfcae90efd6d4de975f2e7c53625bdf1e214a32e1b54a65fff9f6258453
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/rollout-workflow
   runtime: null
   scope: project
@@ -756,7 +767,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/rollout-workflow
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/rollout-workflow/README.md
   runtime: null
   scope: project
@@ -765,7 +776,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/rollout-workflow
   content_hash: sha256:0112ca12803eefba888d18c3f83def9ee5f139fe6cb763893f653e5979b97e97
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/rollout-workflow/SKILL.md
   runtime: null
   scope: project
@@ -774,7 +785,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/rollout-workflow
   content_hash: sha256:388562861550934c88ba19566fc6d1b9fbe9f528a44d62de4c7337bac327d225
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/rollout-workflow/agents/openai.yaml
   runtime: null
   scope: project
@@ -783,7 +794,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/rollout-workflow
   content_hash: sha256:543a7befd986c51540ef35603fe63830f5032dc02b31f89e7f2179df3b3ca5dc
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/security-check
   runtime: null
   scope: project
@@ -792,7 +803,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/security-check
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/security-check/README.md
   runtime: null
   scope: project
@@ -801,7 +812,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/security-check
   content_hash: sha256:d321689b998388180ac852fdb6374ab3b79bec508a53d00461a9db79fb246d2e
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/security-check/SKILL.md
   runtime: null
   scope: project
@@ -810,7 +821,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/security-check
   content_hash: sha256:b343a0f82623298ec8499b44859f80029fdf97ea0367b96da88ff9dcd5bd3297
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/security-check/agents/openai.yaml
   runtime: null
   scope: project
@@ -819,7 +830,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/security-check
   content_hash: sha256:87edf0cc1e8717194d0c536f2d5ac0cc1ac9ec04402311d34e953d2e2b23fa19
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/security-check/references/artifact-inspection.md
   runtime: null
   scope: project
@@ -828,7 +839,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/security-check
   content_hash: sha256:9842555f4789e77e6cf3d22b000116497207ecf6fa5587f2b1fe0dc20e7dffda
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/security-check/references/external-code-execution.md
   runtime: null
   scope: project
@@ -837,7 +848,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/security-check
   content_hash: sha256:87ca817baa02ef6b955e5878f0cd79c875abdb0be6e0177cfce158968e628bc3
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/software-documentation-maintenance
   runtime: null
   scope: project
@@ -846,7 +857,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/software-documentation-maintenance
   content_hash: null
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/software-documentation-maintenance/README.md
   runtime: null
   scope: project
@@ -855,7 +866,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/software-documentation-maintenance
   content_hash: sha256:df6442dbefc58dab91b442b51f3ca4a0af5938f844542d35a3c18a721b631861
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/software-documentation-maintenance/SKILL.md
   runtime: null
   scope: project
@@ -864,7 +875,7 @@ deployments:
   active_owner: aoirint/skills/.apm/skills/software-documentation-maintenance
   content_hash: sha256:0932e99396f223467efa0dee704487350a5bb8106e43513a494e6ec3144e50b9
 - kind: project-relative
-  target: agents
+  target: codex
   value: .agents/skills/software-documentation-maintenance/agents/openai.yaml
   runtime: null
   scope: project
