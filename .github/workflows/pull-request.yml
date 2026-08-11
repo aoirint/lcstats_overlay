@@ -16,7 +16,8 @@ permissions:
   contents: read
 
 jobs:
-  lint:
+  check:
+    name: Check
     # Metadata and Markdown checks fit the slim runner's resource limits.
     runs-on: ubuntu-slim
     timeout-minutes: 15
@@ -28,4 +29,4 @@ jobs:
           persist-credentials: false
 
       - name: Run source checks
-        uses: ./.github/actions/lint-source
+        uses: ./.github/actions/check-repository-source
