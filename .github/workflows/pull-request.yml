@@ -16,8 +16,7 @@ permissions:
   contents: read
 
 jobs:
-  checks:
-    name: Checks
+  lint:
     # Metadata and Markdown checks fit the slim runner's resource limits.
     runs-on: ubuntu-slim
     timeout-minutes: 15
