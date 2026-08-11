@@ -13,8 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  checks:
-    name: Checks
+  lint:
     # Re-run the required source checks on the exact merged commit.
     runs-on: ubuntu-slim
     timeout-minutes: 15
