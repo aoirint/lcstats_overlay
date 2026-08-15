@@ -8,9 +8,8 @@ directly.
 
 - Keep this unpublished APM project at `version: 0.0.0` until its distribution
   and versioning design is explicitly decided.
-- Use APM CLI 0.25.0 for lock operations. It is the newest reviewed release
-  that currently satisfies the normal seven-day cooldown; using it is not an
-  exception.
+- Use APM CLI 0.28.0 for lock operations. It is the newest reviewed release
+  that satisfies the normal seven-day cooldown; using it is not an exception.
 - A maintainer may explicitly waive the normal seven-day wait for a directly
   selected current `aoirint/skills` main commit. Record the waiver and exact
   full commit SHA in the pull request.
