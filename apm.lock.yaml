@@ -1,12 +1,12 @@
 lockfile_version: '1'
-generated_at: '2026-08-15T10:10:43.446893+00:00'
+generated_at: '2026-08-16T13:05:52.870071+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: aoirint/skills
   name: skills
   host: github.com
-  resolved_commit: e5adf74a632936834a31a7cc2507030b362a7210
-  resolved_ref: e5adf74a632936834a31a7cc2507030b362a7210
+  resolved_commit: 0e41c088efb2bdf44ca58564bb5168d119ac9135
+  resolved_ref: 0e41c088efb2bdf44ca58564bb5168d119ac9135
   version: 0.0.0
   package_type: apm_package
   deployed_files:
@@ -88,8 +88,8 @@ dependencies:
     .agents/skills/apm-workflow/SKILL.md: sha256:bbddd9935373713999b78e5390b3c38e0886299beeb410d6eb338d13e25154fa
     .agents/skills/apm-workflow/agents/openai.yaml: sha256:f3c083196472ec9253886b369202ddeb8eb2534fd2da9799798bae2eb33b2e55
     .agents/skills/apm-workflow/references/apm-bootstrap.json: sha256:ae425dc00b981c195e0664ad77b9fed8c4667a45efcdadd382e79fb572d7fc22
-    .agents/skills/apm-workflow/scripts/propose_bootstrap_update.py: sha256:5c8d079ff9caa4175a971c5d231bc24d8143d47d238496cace60b1d91d8d00d8
-    .agents/skills/apm-workflow/scripts/propose_bootstrap_update.py.lock: sha256:016afc221516f1724533f1623ec77ef8a9a80c06a1ffae431f32f5e063e59986
+    .agents/skills/apm-workflow/scripts/propose_bootstrap_update.py: sha256:878feade115442de0c9c0f23856b1fca0b79cad117a1c1de75467cfd5ac9013c
+    .agents/skills/apm-workflow/scripts/propose_bootstrap_update.py.lock: sha256:76042d39ffdbb675188966b4fc41d312b0ec9374a7aa438d4f5e919adcf04c07
     .agents/skills/changelog-workflow/README.md: sha256:7ef8167d26522d95f62b9f11d752487d62b6bfdae05850315189fbe2a19fed83
     .agents/skills/changelog-workflow/SKILL.md: sha256:8d9de8e0e3c31c4a2c176a0d14e3f1a45daf3db364ede7dd86983c8c3f571f54
     .agents/skills/changelog-workflow/agents/openai.yaml: sha256:6264e6dbd0433ab63370e15033ecb94da8dd131c4edcb1d3f2b9abdeb4f680f1
@@ -110,9 +110,9 @@ dependencies:
     .agents/skills/github-actions-quality-check/SKILL.md: sha256:3135d4fcfa68605ec4a9535f9d5d9291b30d915b8556fb829e4e48f3a9b31b39
     .agents/skills/github-actions-quality-check/agents/openai.yaml: sha256:505565c70b7441db1d8c17b5522b7f777acd748be441c55fdcc1f2093e185a5d
     .agents/skills/github-actions-quality-check/assets/github/actions/install-workflow-tools/action.yml: sha256:9a46e0ebabe3d4d2302e75e252a11b4639e88884feb2066665a9bcc099c2b0dd
-    .agents/skills/github-actions-quality-check/assets/github/actions/install-workflow-tools/install-workflow-tools.sh: sha256:767b5865c488f12e2488f55807e76d789e968f11ef6b1364be5f3b47542ea898
-    .agents/skills/github-actions-quality-check/assets/github/workflows/main.yml: sha256:9c6fc9b8a12eda5300d526de709ab17456781179efa43ea9c911bde795204690
-    .agents/skills/github-actions-quality-check/assets/github/workflows/pull-request.yml: sha256:825813d13866d67da9edf0420d9d8290d2ffe36c20ae4ae0f97a1c91992b818b
+    .agents/skills/github-actions-quality-check/assets/github/actions/install-workflow-tools/install-workflow-tools.sh: sha256:ce6b1d70da2f58942588f2589701705d1927c93b042bb06c740702c63b163e50
+    .agents/skills/github-actions-quality-check/assets/github/workflows/main.yml: sha256:1670eec78c530bf26befc2a72bab8ebad301d6fb956383b6f786b6cb740d93a6
+    .agents/skills/github-actions-quality-check/assets/github/workflows/pull-request.yml: sha256:f84e9eb530264c969a1303e539179b3997ce87a274d7c7af6c83b1b007194131
     .agents/skills/github-actions-quality-check/references/composite-actions.md: sha256:d914d0fe4495121c5fdf168681a6dac62b897c28771e67ffb30c04f8d7fe3298
     .agents/skills/github-actions-quality-check/references/naming-and-readability.md: sha256:ed1ed605d688fcce1f5e764b4858009240cf2334832b84786f210ce450db71c7
     .agents/skills/github-actions-quality-check/references/repository-enforcement.md: sha256:0d511bf8d7467cab263da08be0263c8fa1a69555d9937e98472ef4c9de7c80d9
@@ -144,7 +144,7 @@ dependencies:
     .agents/skills/security-check/references/artifact-inspection.md: sha256:9842555f4789e77e6cf3d22b000116497207ecf6fa5587f2b1fe0dc20e7dffda
     .agents/skills/security-check/references/distributed-software-licensing.md: sha256:dce7c9fbfe665eb875388ab732b63b0226a5fd4592b12a62c42b6d1372c0d025
     .agents/skills/security-check/references/external-code-execution.md: sha256:87ca817baa02ef6b955e5878f0cd79c875abdb0be6e0177cfce158968e628bc3
-  content_hash: sha256:18511437387a51f8955b68f497f9826fcef3f8facea3f823b996ec6b104ec600
+  content_hash: sha256:56732991b5c5c0e6e7d228dedcbe096f12f5839ed4dc5eefeaffcb497d636c0d
   skill_subset:
   - apm-workflow
   - changelog-workflow
@@ -214,7 +214,7 @@ deployments:
   owners:
   - aoirint/skills
   active_owner: aoirint/skills
-  content_hash: sha256:5c8d079ff9caa4175a971c5d231bc24d8143d47d238496cace60b1d91d8d00d8
+  content_hash: sha256:878feade115442de0c9c0f23856b1fca0b79cad117a1c1de75467cfd5ac9013c
 - kind: project-relative
   target: codex
   value: .agents/skills/apm-workflow/scripts/propose_bootstrap_update.py.lock
@@ -223,7 +223,7 @@ deployments:
   owners:
   - aoirint/skills
   active_owner: aoirint/skills
-  content_hash: sha256:016afc221516f1724533f1623ec77ef8a9a80c06a1ffae431f32f5e063e59986
+  content_hash: sha256:76042d39ffdbb675188966b4fc41d312b0ec9374a7aa438d4f5e919adcf04c07
 - kind: project-relative
   target: codex
   value: .agents/skills/changelog-workflow
@@ -466,7 +466,7 @@ deployments:
   owners:
   - aoirint/skills
   active_owner: aoirint/skills
-  content_hash: sha256:767b5865c488f12e2488f55807e76d789e968f11ef6b1364be5f3b47542ea898
+  content_hash: sha256:ce6b1d70da2f58942588f2589701705d1927c93b042bb06c740702c63b163e50
 - kind: project-relative
   target: codex
   value: .agents/skills/github-actions-quality-check/assets/github/workflows/main.yml
@@ -475,7 +475,7 @@ deployments:
   owners:
   - aoirint/skills
   active_owner: aoirint/skills
-  content_hash: sha256:9c6fc9b8a12eda5300d526de709ab17456781179efa43ea9c911bde795204690
+  content_hash: sha256:1670eec78c530bf26befc2a72bab8ebad301d6fb956383b6f786b6cb740d93a6
 - kind: project-relative
   target: codex
   value: .agents/skills/github-actions-quality-check/assets/github/workflows/pull-request.yml
@@ -484,7 +484,7 @@ deployments:
   owners:
   - aoirint/skills
   active_owner: aoirint/skills
-  content_hash: sha256:825813d13866d67da9edf0420d9d8290d2ffe36c20ae4ae0f97a1c91992b818b
+  content_hash: sha256:f84e9eb530264c969a1303e539179b3997ce87a274d7c7af6c83b1b007194131
 - kind: project-relative
   target: codex
   value: .agents/skills/github-actions-quality-check/references/composite-actions.md

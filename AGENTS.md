@@ -17,7 +17,7 @@ directly.
   does not cover dependencies of `aoirint/skills`; review those dependencies
   and enforce their cooldown independently.
 - To update Skills, review source and license changes, update the full commit
-  pins in `apm.yml`, regenerate `apm.lock.yaml` from scratch with APM 0.25.0,
+  pins in `apm.yml`, regenerate `apm.lock.yaml` from scratch with APM 0.28.0,
   run `apm install --frozen` and `apm audit --ci`, then commit the manifest,
   lockfile, notices, and generated `.agents/skills/` changes together.
 
