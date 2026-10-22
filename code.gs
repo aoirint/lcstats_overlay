@@ -40,7 +40,7 @@ function doPost(e) {
     : previousQuotaNumber;
 
   const lostScraps = missedItems.filter((item) => item.CollectedOnPreviousDay);
-  const lostScrapValue = lostScraps.reduce((acc, num) => acc + num, 0);
+  const lostScrapValue = lostScraps.reduce((sum, item) => sum + item.Value, 0);
 
   runSheet.appendRow([
     quotaNumber, // Quota Number
