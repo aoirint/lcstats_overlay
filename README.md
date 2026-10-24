@@ -1,6 +1,22 @@
 # LCStats Overlay
 
-OBS Browser Source overlay for showing a Google Sheets key-value summary.
+A reference Google Sheets integration for
+[LCStats Relay](https://github.com/aoirint/lcstats_relay), with an OBS browser
+source overlay for the resulting statistics.
+
+## Role in the integration
+
+This repository provides the receiver and presentation side of the example:
+
+- `code.gs`: an Apps Script web app that accepts LCStats Relay statistics and
+  writes them into Google Sheets.
+- Spreadsheet layout and formulas: calculate the values shown on stream.
+- `index.html`: an OBS browser source that reads the `Value` sheet.
+
+LCStats Relay receives data from LCStatsTracker, archives it locally and sends
+it to the configured receiver. Start with this implementation when setting up
+Google Sheets delivery. Alternative receivers must follow
+[Relay's delivery contract](https://github.com/aoirint/lcstats_relay/blob/main/docs/architecture/relay-output.md#google-sheets-through-google-apps-script).
 
 ## Setup
 
@@ -35,8 +51,8 @@ Every request requires the `LCSTATS_TOKEN` script property; the endpoint refuses
    Set it to a long, randomly generated value.
 3. Deploy the script as a web app from **Deploy > New deployment > Web app**.
    Select the execution identity that has access to the destination spreadsheet.
-4. Configure the game-side sender to POST to the deployment's `/exec` URL with
-    the same token as a `token` query or form parameter.
+4. In LCStats Relay, open GAS Auth and set the deployment's `/exec` URL and the
+   same token. Relay sends the token as a `token` query parameter.
 
 Apps Script web-app access and execution identity are separate deployment settings.
 If the sender cannot authenticate with Google, the web app may need anonymous
