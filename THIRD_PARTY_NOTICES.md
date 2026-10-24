@@ -58,14 +58,14 @@ Name. This license is available with a FAQ at http://scripts.sil.org/OFL.
 - Source: [aoirint/skills](https://github.com/aoirint/skills), selected Skill
   directories under `.apm/skills/`
 - Pinned commit:
-  [`0e41c088efb2bdf44ca58564bb5168d119ac9135`](https://github.com/aoirint/skills/tree/0e41c088efb2bdf44ca58564bb5168d119ac9135)
+  [`d160f841b2565a018fd97ef1a199e8019221fe44`](https://github.com/aoirint/skills/tree/d160f841b2565a018fd97ef1a199e8019221fe44)
 - Deployed paths: selected directories under `.agents/skills/`, as recorded in
   `apm.lock.yaml`
 - License: MIT; see the
-  [upstream license](https://github.com/aoirint/skills/blob/0e41c088efb2bdf44ca58564bb5168d119ac9135/LICENSE)
+  [upstream license](https://github.com/aoirint/skills/blob/d160f841b2565a018fd97ef1a199e8019221fe44/LICENSE)
 - Copyright: Copyright (c) 2026 aoirint
 - Notice: the selected Skill directories contain no additional copyright or
   NOTICE files.
-- Cooldown: the maintainer waived the waiting period only for this direct
-  `aoirint/skills` commit. Dependencies remain subject to normal review and
-  cooldown requirements.
+- Cooldown: the selected commit was published on 2026-09-01 and has completed
+  the normal seven-day waiting period. Dependencies remain subject to
+  independent review.
