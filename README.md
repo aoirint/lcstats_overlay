@@ -4,6 +4,12 @@ A reference Google Sheets integration for
 [LCStats Relay](https://github.com/aoirint/lcstats_relay), with an OBS browser
 source overlay for the resulting statistics.
 
+## LCStatsTracker
+
+LCStatsTracker is the Lethal Company mod that supplies statistics for this
+integration. Get it from [Thunderstore](https://thunderstore.io/c/lethal-company/p/MikuOreo/LCStatsTracker/)
+and find its source on [GitHub](https://github.com/MakuAureo/LCStatsTracker).
+
 ## Role in the integration
 
 This repository provides the receiver and presentation side of the example:
