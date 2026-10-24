@@ -182,3 +182,18 @@ Rows whose `Moon` is `71 Gordion` are excluded from the average and clear-rate s
 This overlay bundles `assets/3270-Regular.ttf` from
 [rbanffy/3270font](https://github.com/rbanffy/3270font).
 The complete attribution and license notices are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## Dependency maintenance
+
+This overlay uses browser JavaScript and the managed Apps Script runtime;
+there is no npm application dependency graph or repository-pinned JavaScript
+runtime. The GAS ingestion endpoint already returns JSON with `ok: true`, as
+required by LCStats Relay's acknowledgement check.
+
+Workflow inputs are reviewed with a seven-day cooldown. The 2026-10-24 refresh
+uses pinact 5.0.0 and the shared Skill commit recorded in `apm.lock.yaml` and
+`THIRD_PARTY_NOTICES.md`. Existing checkout, APM action, Markdown action,
+actionlint and ShellCheck pins were checked and remain current eligible releases.
+APM CLI remains at the repository-reviewed 0.28.0 bootstrap; a generator upgrade
+requires a separate migration review. This maintenance does not redeploy GAS
+or change the running OBS source.
