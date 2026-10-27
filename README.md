@@ -216,6 +216,6 @@ Workflow inputs are reviewed with a seven-day cooldown. The 2026-10-24 refresh
 uses pinact 5.0.0 and the shared Skill commit recorded in `apm.lock.yaml` and
 `THIRD_PARTY_NOTICES.md`. Existing checkout, APM action, Markdown action,
 actionlint and ShellCheck pins were checked and remain current eligible releases.
-APM CLI remains at the repository-reviewed 0.28.0 bootstrap; a generator upgrade
-requires a separate migration review. This maintenance does not redeploy GAS
-or change the running OBS source.
+APM CLI uses the repository-reviewed 0.34.0 bootstrap and its reviewed
+deployment ledger. Frozen installs verify that ledger without rewriting it.
+This maintenance does not redeploy GAS or change the running OBS source.
