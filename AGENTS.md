@@ -8,7 +8,7 @@ directly.
 
 - Keep this unpublished APM project at `version: 0.0.0` until its distribution
   and versioning design is explicitly decided.
-- Use APM CLI 0.28.0 for lock operations. It is the newest reviewed release
+- Use APM CLI 0.34.0 for lock operations. It is the newest reviewed release
   that satisfies the normal seven-day cooldown; using it is not an exception.
 - A maintainer may explicitly waive the normal seven-day wait for a directly
   selected current `aoirint/skills` main commit. Record the waiver and exact
@@ -17,8 +17,9 @@ directly.
   does not cover dependencies of `aoirint/skills`; review those dependencies
   and enforce their cooldown independently.
 - To update Skills, review source and license changes, update the full commit
-  pins in `apm.yml`, regenerate `apm.lock.yaml` from scratch with APM 0.28.0,
-  run `apm install --frozen` and `apm audit --ci`, then commit the manifest,
+  pins in `apm.yml`, and preserve exact owned outputs before rebuilding the
+  ledger with APM 0.34.0. Complete and review the ledger with `apm install`,
+  verify with `apm install --frozen` and `apm audit --ci`, then commit the manifest,
   lockfile, notices, and generated `.agents/skills/` changes together.
 
 ## Markdown Checks
