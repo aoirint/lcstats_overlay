@@ -209,13 +209,10 @@ The complete attribution and license notices are in [THIRD_PARTY_NOTICES.md](THI
 
 This overlay uses browser JavaScript and the managed Apps Script runtime;
 there is no npm application dependency graph or repository-pinned JavaScript
-runtime. The GAS ingestion endpoint already returns JSON with `ok: true`, as
-required by LCStats Relay's acknowledgement check.
+runtime.
 
-Workflow inputs are reviewed with a seven-day cooldown. The 2026-10-24 refresh
-uses pinact 5.0.0 and the shared Skill commit recorded in `apm.lock.yaml` and
-`THIRD_PARTY_NOTICES.md`. Existing checkout, APM action, Markdown action,
-actionlint and ShellCheck pins were checked and remain current eligible releases.
-APM CLI uses the repository-reviewed 0.35.0 bootstrap and its reviewed
-deployment ledger. Frozen installs verify that ledger without rewriting it.
-This maintenance does not redeploy GAS or change the running OBS source.
+Apply the seven-day cooldown when updating workflow dependencies. Preserve
+immutable action pins and update their version comments together.
+Use APM CLI 0.35.0 to update the shared Skills, following
+[the repository instructions](AGENTS.md#apm-managed-skills).
+These dependency updates do not redeploy Apps Script or change the OBS source.
